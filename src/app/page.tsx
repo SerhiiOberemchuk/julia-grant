@@ -1,7 +1,4 @@
 import { site } from "@/content/site";
-import { RevealObserver } from "@/components/ui/RevealObserver";
-import { MobileBar } from "@/components/ui/MobileBar";
-import { Header } from "@/components/sections/Header";
 import { Hero } from "@/components/sections/Hero";
 import { Ticker } from "@/components/sections/Ticker";
 import { Programs } from "@/components/sections/Programs";
@@ -15,7 +12,6 @@ import { Testimonials } from "@/components/sections/Testimonials";
 import { Pricing } from "@/components/sections/Pricing";
 import { Faq } from "@/components/sections/Faq";
 import { Contact } from "@/components/sections/Contact";
-import { Footer } from "@/components/sections/Footer";
 
 function JsonLd() {
   const data = {
@@ -49,9 +45,6 @@ function JsonLd() {
 export default function Home() {
   return (
     <>
-      <RevealObserver />
-      <Header />
-      <main>
         <Hero />
         <Ticker />
         <Programs />
@@ -65,9 +58,6 @@ export default function Home() {
         <Pricing />
         <Faq />
         <Contact />
-      </main>
-      <Footer />
-      <MobileBar />
       <JsonLd />
     </>
   );

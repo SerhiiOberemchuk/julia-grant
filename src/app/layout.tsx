@@ -1,7 +1,12 @@
+import "./globals.css";
+
 import type { Metadata, Viewport } from "next";
 import { Unbounded, Manrope, JetBrains_Mono } from "next/font/google";
 import { site } from "@/content/site";
-import "./globals.css";
+import { Header } from "@/components/sections/Header";
+import { Footer } from "@/components/sections/Footer";
+import { MobileBar } from "@/components/ui/MobileBar";
+import { RevealObserver } from "@/components/ui/RevealObserver";
 
 const unbounded = Unbounded({
   variable: "--font-unbounded",
@@ -61,7 +66,13 @@ export default function RootLayout({ children }: { children: React.ReactNode }) 
       lang="uk"
       className={`${unbounded.variable} ${manrope.variable} ${mono.variable}`}
     >
-      <body className="grain">{children}</body>
+      <body className="grain">
+        <RevealObserver />
+        <Header />
+        <main id="main">{children}</main>
+        <Footer />
+        <MobileBar />
+      </body>
     </html>
   );
 }

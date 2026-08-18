@@ -64,6 +64,6 @@
   transition: width 1s var(--ease-out) 0.2s;
 }
 
-.item:global(.is-visible) .leader {
+.item[data-revealed] .leader {
   width: 48px;
 }

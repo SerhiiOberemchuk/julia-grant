@@ -117,14 +117,14 @@
   }
 }
 
-.cta {
+.bar .cta {
   display: none;
   min-height: 46px;
   padding-inline: 1.15rem;
 }
 
 @media (min-width: 640px) {
-  .cta {
+  .bar .cta {
     display: inline-flex;
   }
 }

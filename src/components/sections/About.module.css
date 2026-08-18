@@ -6,8 +6,8 @@
 
 .grid {
   display: grid;
-  gap: clamp(2rem, 5vw, 5rem);
-  align-items: center;
+  gap: clamp(2rem, 5vw, 4.5rem);
+  align-items: start;
 }
 
 @media (min-width: 1024px) {
@@ -16,27 +16,20 @@
   }
 }
 
+/* ---------- Ліва колонка ---------- */
 .visual {
-  position: relative;
-  max-width: 460px;
+  display: grid;
+  gap: 0;
+  max-width: 440px;
   width: 100%;
   margin-inline: auto;
 }
 
 .photo {
-  border-radius: var(--radius-xl);
   overflow: hidden;
   aspect-ratio: 4 / 5;
   background: var(--mint-2);
-  box-shadow: var(--shadow-lift);
-  border: 1px solid var(--line);
-  /* легкий нахил як фото на столі */
-  transform: rotate(-2deg);
-  transition: transform 0.6s var(--ease-out);
-}
-
-.visual:hover .photo {
-  transform: rotate(0);
+  border-radius: 6px 6px 0 0;
 }
 
 .photo img {
@@ -45,43 +38,45 @@
   object-fit: cover;
 }
 
-.badge {
-  position: absolute;
-  left: -4%;
-  bottom: 12%;
-  display: inline-flex;
-  align-items: center;
-  gap: 0.55rem;
-  padding: 0.7rem 1rem;
-  background: var(--white);
+/* «Карта фахівця»: рівні рядки, моношрифт ключів — як у документі */
+.credentials {
+  margin: 0;
   border: 1px solid var(--line);
-  border-radius: 999px;
-  box-shadow: var(--shadow-lift);
-  font-size: 0.86rem;
+  border-top: 0;
+  border-radius: 0 0 6px 6px;
+  background: var(--white);
+  overflow: hidden;
+}
+
+.credential {
+  display: grid;
+  grid-template-columns: minmax(0, 1fr) minmax(0, 1.15fr);
+  gap: 1rem;
+  padding: 0.7rem clamp(1rem, 2.5vw, 1.35rem);
+  border-bottom: 1px solid var(--line);
+}
+
+.credential:last-child {
+  border-bottom: 0;
+}
+
+.credential dt {
+  font-family: var(--font-mono);
+  font-size: 0.68rem;
+  letter-spacing: 0.1em;
+  text-transform: uppercase;
+  color: var(--ink-3);
+  align-self: center;
+}
+
+.credential dd {
+  margin: 0;
+  font-size: 0.93rem;
   font-weight: 600;
-  color: var(--ink);
+  text-align: right;
 }
 
-.badge svg {
-  color: var(--green);
-}
-
-.badgeB {
-  left: auto;
-  right: -4%;
-  top: 8%;
-  bottom: auto;
-}
-
-@media (max-width: 420px) {
-  .badge {
-    left: 0;
-  }
-  .badgeB {
-    right: 0;
-  }
-}
-
+/* ---------- Права колонка ---------- */
 .copy {
   display: grid;
   gap: 1.25rem;
@@ -96,89 +91,51 @@
 .para {
   font-size: 1.05rem;
   color: var(--ink-2);
-  line-height: 1.65;
+  line-height: 1.7;
 }
 
-.para:first-child::first-letter {
-  font-family: var(--font-display);
-  font-size: 2.6em;
-  float: left;
-  line-height: 0.85;
-  padding-right: 0.12em;
-  color: var(--green);
-  font-weight: 700;
+.para:first-child {
+  font-size: clamp(1.1rem, 1rem + 0.5vw, 1.28rem);
+  line-height: 1.55;
+  color: var(--ink);
 }
 
 .facts {
   display: grid;
-  grid-template-columns: repeat(2, 1fr);
-  gap: 0;
+  grid-template-columns: repeat(2, minmax(0, 1fr));
+  gap: 1.25rem 1.5rem;
   margin: 0.5rem 0 0;
-  border: 1px solid var(--line);
-  border-radius: var(--radius-lg);
-  overflow: hidden;
-  background: var(--white);
+  padding-top: 1.5rem;
+  border-top: 1px solid var(--line);
 }
 
-@media (min-width: 640px) {
+@media (min-width: 720px) {
   .facts {
-    grid-template-columns: repeat(4, 1fr);
+    grid-template-columns: repeat(4, minmax(0, 1fr));
   }
 }
 
 .fact {
-  padding: 1.1rem 1.2rem;
-  border-right: 1px solid var(--line);
-  border-bottom: 1px solid var(--line);
   display: grid;
-  gap: 0.2rem;
-}
-
-.fact:nth-child(2n) {
-  border-right: 0;
-}
-
-@media (min-width: 640px) {
-  .fact {
-    border-bottom: 0;
-  }
-  .fact:nth-child(2n) {
-    border-right: 1px solid var(--line);
-  }
-  .fact:last-child {
-    border-right: 0;
-  }
+  gap: 0.25rem;
+  min-width: 0;
 }
 
 .factValue {
   margin: 0;
   font-family: var(--font-display);
   font-weight: 600;
-  font-size: 1.5rem;
+  font-size: clamp(1.35rem, 1.1rem + 0.8vw, 1.7rem);
   letter-spacing: -0.02em;
-  order: -1;
+  line-height: 1;
 }
 
 .factLabel {
-  font-size: 0.8rem;
+  font-size: 0.82rem;
+  line-height: 1.35;
   color: var(--ink-3);
 }
 
 .foot {
-  display: flex;
-  align-items: center;
-  justify-content: space-between;
-  gap: 1rem;
-  flex-wrap: wrap;
   margin-top: 0.5rem;
-}
-
-.signature {
-  font-family: var(--font-display);
-  font-size: 2rem;
-  font-weight: 400;
-  color: var(--ink-3);
-  opacity: 0.55;
-  letter-spacing: 0.02em;
-  transform: rotate(-6deg);
 }

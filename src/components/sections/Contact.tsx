@@ -1,18 +1,48 @@
 "use client";
 
-import { useState, type FormEvent } from "react";
+import { useEffect, useRef, useState, type FormEvent } from "react";
+import Link from "next/link";
 import { site } from "@/content/site";
 import { ArrowRight, Telegram, Viber, Instagram, Phone, Mail, Check } from "@/components/ui/Icons";
 import { trackLead } from "@/lib/analytics";
+import { DIRECTION_EVENT, getLeadDirection } from "@/lib/leadDirection";
 import s from "./Contact.module.css";
 
 type Status = "idle" | "sending" | "ok" | "error";
+
+const DIRECTIONS: readonly string[] = site.contact.directions;
 
 export function Contact() {
   const c = site.contact;
   const [status, setStatus] = useState<Status>("idle");
   const [direction, setDirection] = useState<string>(c.directions[0]);
   const [errors, setErrors] = useState<Record<string, string>>({});
+  const [highlight, setHighlight] = useState(false);
+  const hlTimer = useRef<number | undefined>(undefined);
+
+  // Кнопки «Підходить мені» та CTA калькулятора обирають напрям тут
+  useEffect(() => {
+    const stored = getLeadDirection();
+    if (stored && DIRECTIONS.includes(stored)) {
+      // через rAF, щоб не робити синхронний setState всередині ефекту
+      requestAnimationFrame(() => setDirection(stored));
+    }
+
+    const onPick = (e: Event) => {
+      const value = (e as CustomEvent<string>).detail;
+      if (!value || !DIRECTIONS.includes(value)) return;
+      setDirection(value);
+      setHighlight(true);
+      window.clearTimeout(hlTimer.current);
+      hlTimer.current = window.setTimeout(() => setHighlight(false), 1800);
+    };
+
+    window.addEventListener(DIRECTION_EVENT, onPick);
+    return () => {
+      window.removeEventListener(DIRECTION_EVENT, onPick);
+      window.clearTimeout(hlTimer.current);
+    };
+  }, []);
 
   async function onSubmit(e: FormEvent<HTMLFormElement>) {
     e.preventDefault();
@@ -115,7 +145,7 @@ export function Contact() {
                 </label>
               </div>
 
-              <fieldset className={s.field}>
+              <fieldset className={`${s.field} ${highlight ? s.fieldPulse : ""}`}>
                 <legend className={s.fieldLabel}>{c.fields.direction}</legend>
                 <div className={s.pills} role="radiogroup">
                   {c.directions.map((d) => (
@@ -151,7 +181,7 @@ export function Contact() {
                   <Check width={12} height={12} />
                 </span>
                 <span>
-                  {c.fields.consent} (<a href="/privacy">політика</a>)
+                  {c.fields.consent} (<Link href="/privacy">політика</Link>)
                 </span>
               </label>
               {errors.consent && <em className={s.err}>{errors.consent}</em>}

@@ -1,3 +1,4 @@
+import Link from "next/link";
 import { site } from "@/content/site";
 import { Telegram, Viber, Instagram, ArrowUpRight } from "@/components/ui/Icons";
 import s from "./Footer.module.css";
@@ -13,27 +14,43 @@ export function Footer() {
           <p className={`muted ${s.loc}`}>{site.brand.location}</p>
         </div>
 
-        <nav className={s.nav} aria-label="Футер">
+        <nav className={s.nav} aria-label="Розділи сторінки">
+          <p className={s.colTitle}>Розділи</p>
           {site.nav.map((n) => (
-            <a key={n.href} href={n.href}>
+            <Link key={n.href} href={n.href}>
               {n.label}
-            </a>
+            </Link>
+          ))}
+        </nav>
+
+        <nav className={s.nav} aria-label="Документи">
+          <p className={s.colTitle}>Документи</p>
+          {site.legalPages.map((p) => (
+            <Link key={p.href} href={p.href}>
+              {p.label}
+            </Link>
           ))}
         </nav>
 
         <div className={s.social}>
-          <a href={site.contacts.telegram} target="_blank" rel="noopener noreferrer" aria-label="Telegram">
-            <Telegram />
-          </a>
-          <a href={site.contacts.viber} aria-label="Viber">
-            <Viber />
-          </a>
-          <a href={site.contacts.instagram} target="_blank" rel="noopener noreferrer" aria-label="Instagram">
-            <Instagram />
-          </a>
+          <p className={s.colTitle}>Контакти</p>
           <a href={site.contacts.phoneHref} className={s.phone}>
             {site.contacts.phoneDisplay}
           </a>
+          <a href={`mailto:${site.contacts.email}`} className={s.mail}>
+            {site.contacts.email}
+          </a>
+          <div className={s.icons}>
+            <a href={site.contacts.telegram} target="_blank" rel="noopener noreferrer" aria-label="Telegram">
+              <Telegram />
+            </a>
+            <a href={site.contacts.viber} aria-label="Viber">
+              <Viber />
+            </a>
+            <a href={site.contacts.instagram} target="_blank" rel="noopener noreferrer" aria-label="Instagram">
+              <Instagram />
+            </a>
+          </div>
         </div>
       </div>
 
@@ -55,7 +72,6 @@ export function Footer() {
           <span>
             © {year} {site.footer.legalName}. {site.footer.rights}
           </span>
-          <a href="/privacy">{site.footer.privacy}</a>
         </div>
       </div>
     </footer>

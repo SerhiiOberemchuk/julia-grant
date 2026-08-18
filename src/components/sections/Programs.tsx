@@ -1,5 +1,6 @@
 import { site } from "@/content/site";
 import { Check, ArrowRight } from "@/components/ui/Icons";
+import { PickDirection } from "@/components/ui/PickDirection";
 import s from "./Programs.module.css";
 
 export function Programs() {
@@ -45,10 +46,13 @@ export function Programs() {
                   </li>
                 ))}
               </ul>
-              <a href="#contact" className={`btn ${i === 1 ? "btn--light" : "btn--ghost"} ${s.cta}`}>
+              <PickDirection
+                direction={it.formValue}
+                className={`btn ${i === 1 ? "btn--light" : "btn--ghost"} ${s.cta}`}
+              >
                 Підходить мені
                 <ArrowRight className="btn__icon btn__icon--arrow" />
-              </a>
+              </PickDirection>
               <span className={s.watermark} aria-hidden="true">
                 {i === 0 ? "500К" : "2,5М"}
               </span>

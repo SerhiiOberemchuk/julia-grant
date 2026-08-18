@@ -4,8 +4,9 @@ import { useEffect } from "react";
 
 /**
  * Один глобальний IntersectionObserver для всіх елементів з атрибутом
- * [data-reveal]. Додає клас .is-visible при появі у в'юпорті.
- * Підтримує динамічно додані вузли через MutationObserver.
+ * [data-reveal]. При появі у в'юпорті ставить атрибут data-revealed
+ * (саме атрибут, а не клас: className керує React і при ре-рендері
+ * перетирав би доданий клас). Підтримує динамічні вузли через MutationObserver.
  */
 export function RevealObserver() {
   useEffect(() => {
@@ -15,7 +16,7 @@ export function RevealObserver() {
     const nodes = () => Array.from(document.querySelectorAll<HTMLElement>("[data-reveal]"));
 
     if (reduce || !("IntersectionObserver" in window)) {
-      nodes().forEach((n) => n.classList.add("is-visible"));
+      nodes().forEach((n) => n.setAttribute("data-revealed", ""));
       return;
     }
 
@@ -23,7 +24,7 @@ export function RevealObserver() {
       (entries) => {
         for (const e of entries) {
           if (e.isIntersecting) {
-            (e.target as HTMLElement).classList.add("is-visible");
+            (e.target as HTMLElement).setAttribute("data-revealed", "");
             io.unobserve(e.target);
           }
         }
@@ -31,7 +32,7 @@ export function RevealObserver() {
       { rootMargin: "0px 0px -8% 0px", threshold: 0.12 },
     );
 
-    const observeAll = () => nodes().forEach((n) => !n.classList.contains("is-visible") && io.observe(n));
+    const observeAll = () => nodes().forEach((n) => !n.hasAttribute("data-revealed") && io.observe(n));
     observeAll();
 
     const mo = new MutationObserver(observeAll);

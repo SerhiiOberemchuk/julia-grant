@@ -18,11 +18,26 @@
   border-bottom: 1px solid rgba(245, 241, 234, 0.14);
 }
 
-@media (min-width: 900px) {
+@media (min-width: 640px) {
   .grid {
-    grid-template-columns: 1.2fr 1.6fr 1fr;
+    grid-template-columns: repeat(2, minmax(0, 1fr));
+  }
+}
+
+@media (min-width: 1000px) {
+  .grid {
+    grid-template-columns: 1.4fr 1fr 1fr 1.2fr;
     align-items: start;
   }
+}
+
+.colTitle {
+  font-family: var(--font-mono);
+  font-size: 0.68rem;
+  letter-spacing: 0.14em;
+  text-transform: uppercase;
+  color: rgba(245, 241, 234, 0.45);
+  margin-bottom: 0.35rem;
 }
 
 .brand {
@@ -52,14 +67,8 @@
 
 .nav {
   display: grid;
-  grid-template-columns: repeat(2, minmax(0, 1fr));
-  gap: 0.6rem 1.5rem;
-}
-
-@media (min-width: 640px) {
-  .nav {
-    grid-template-columns: repeat(3, minmax(0, 1fr));
-  }
+  align-content: start;
+  gap: 0.5rem;
 }
 
 .nav a {
@@ -73,19 +82,35 @@
 }
 
 .social {
+  display: grid;
+  align-content: start;
+  gap: 0.5rem;
+  justify-items: start;
+}
+
+.social .phone {
+  font-family: var(--font-display);
+  font-size: 1.15rem;
+  font-weight: 600;
+  font-variant-numeric: tabular-nums;
+}
+
+.social .mail {
+  color: rgba(245, 241, 234, 0.8);
+}
+
+.social .phone:hover,
+.social .mail:hover {
+  color: var(--mint);
+}
+
+.icons {
   display: flex;
-  align-items: center;
-  flex-wrap: wrap;
-  gap: 0.6rem;
+  gap: 0.5rem;
+  margin-top: 0.5rem;
 }
 
-@media (min-width: 900px) {
-  .social {
-    justify-content: flex-end;
-  }
-}
-
-.social a {
+.icons a {
   width: 44px;
   height: 44px;
   border-radius: 999px;
@@ -95,17 +120,10 @@
   transition: background-color 0.3s, color 0.3s, transform 0.3s var(--ease-out);
 }
 
-.social a:hover {
+.icons a:hover {
   background: var(--paper);
   color: var(--ink);
   transform: translateY(-2px);
-}
-
-.social .phone {
-  width: auto;
-  padding: 0 1rem;
-  font-weight: 600;
-  font-variant-numeric: tabular-nums;
 }
 
 .legal {

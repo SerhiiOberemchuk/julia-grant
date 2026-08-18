@@ -386,7 +386,7 @@ button {
   transform: scale(0.94);
 }
 
-[data-reveal].is-visible {
+[data-reveal][data-revealed] {
   opacity: 1;
   transform: none;
 }

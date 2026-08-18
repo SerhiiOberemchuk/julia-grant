@@ -72,3 +72,20 @@
   color: var(--marker);
   flex: none;
 }
+
+.actions {
+  display: grid;
+  gap: 0.9rem;
+  justify-items: start;
+}
+
+.link {
+  text-decoration: underline;
+  text-underline-offset: 3px;
+  font-weight: 600;
+  font-size: 0.95rem;
+}
+
+.link:hover {
+  color: var(--green);
+}

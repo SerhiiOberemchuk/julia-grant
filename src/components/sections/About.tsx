@@ -1,6 +1,6 @@
 import Image from "next/image";
 import { site } from "@/content/site";
-import { Shield, Document, ArrowRight } from "@/components/ui/Icons";
+import { ArrowRight } from "@/components/ui/Icons";
 import s from "./About.module.css";
 
 export function About() {
@@ -16,17 +16,19 @@ export function About() {
               width={900}
               height={1125}
               unoptimized
-              sizes="(min-width: 1024px) 460px, 90vw"
+              sizes="(min-width: 1024px) 440px, 90vw"
             />
           </figure>
-          <div className={s.badge}>
-            <Shield width={18} height={18} />
-            <span>Працюю офіційно за договором</span>
-          </div>
-          <div className={`${s.badge} ${s.badgeB}`}>
-            <Document width={18} height={18} />
-            <span>Фінансова освіта</span>
-          </div>
+
+          {/* Реквізити експерта — суха «карта фахівця» замість плаваючих бейджів */}
+          <dl className={s.credentials}>
+            {a.credentials.map((c) => (
+              <div key={c.k} className={s.credential}>
+                <dt>{c.k}</dt>
+                <dd>{c.v}</dd>
+              </div>
+            ))}
+          </dl>
         </div>
 
         <div className={s.copy}>
@@ -36,6 +38,7 @@ export function About() {
           <h2 id="about-title" className="h2" data-reveal>
             {a.title}
           </h2>
+
           <div className={s.paras}>
             {a.paragraphs.map((t, i) => (
               <p key={i} className={s.para} data-reveal style={{ "--reveal-delay": `${i * 80}ms` } as React.CSSProperties}>
@@ -47,8 +50,8 @@ export function About() {
           <dl className={s.facts} data-reveal>
             {a.facts.map((f) => (
               <div key={f.label} className={s.fact}>
-                <dt className={s.factLabel}>{f.label}</dt>
                 <dd className={`num ${s.factValue}`}>{f.value}</dd>
+                <dt className={s.factLabel}>{f.label}</dt>
               </div>
             ))}
           </dl>
@@ -58,9 +61,6 @@ export function About() {
               Поговорити зі мною
               <ArrowRight className="btn__icon btn__icon--arrow" />
             </a>
-            <span className={s.signature} aria-hidden="true">
-              {a.signature}
-            </span>
           </div>
         </div>
       </div>

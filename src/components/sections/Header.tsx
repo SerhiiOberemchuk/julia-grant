@@ -1,6 +1,7 @@
 "use client";
 
 import { useEffect, useState } from "react";
+import Link from "next/link";
 import { site } from "@/content/site";
 import { Phone, ArrowUpRight } from "@/components/ui/Icons";
 import s from "./Header.module.css";
@@ -26,7 +27,7 @@ export function Header() {
   return (
     <header className={`${s.header} ${scrolled ? s.scrolled : ""}`}>
       <div className={`container ${s.bar}`}>
-        <a href="#top" className={s.logo} aria-label="На початок сторінки">
+        <Link href="/" className={s.logo} aria-label="На головну">
           <span className={s.logoMark} aria-hidden="true">
             <svg viewBox="0 0 40 40" width="40" height="40">
               <circle cx="20" cy="20" r="19" fill="none" stroke="currentColor" strokeWidth="1.5" />
@@ -37,13 +38,13 @@ export function Header() {
             <b>{site.brand.shortName}</b>
             <i>{site.brand.tagline}</i>
           </span>
-        </a>
+        </Link>
 
         <nav className={s.nav} aria-label="Розділи сторінки">
           {site.nav.map((n) => (
-            <a key={n.href} href={n.href} className={s.navLink}>
+            <Link key={n.href} href={n.href} className={s.navLink}>
               {n.label}
-            </a>
+            </Link>
           ))}
         </nav>
 
@@ -52,10 +53,10 @@ export function Header() {
             <Phone width={18} height={18} />
             <span>{site.contacts.phoneDisplay}</span>
           </a>
-          <a href="#contact" className={`btn btn--primary ${s.cta}`}>
+          <Link href="/#contact" className={`btn btn--primary ${s.cta}`}>
             Консультація
             <ArrowUpRight className="btn__icon" />
-          </a>
+          </Link>
           <button
             type="button"
             className={`${s.burger} ${open ? s.burgerOpen : ""}`}
@@ -73,7 +74,7 @@ export function Header() {
       <div id="mobile-menu" className={`${s.mobile} ${open ? s.mobileOpen : ""}`} aria-hidden={!open}>
         <nav className={s.mobileNav} aria-label="Мобільне меню">
           {site.nav.map((n, i) => (
-            <a
+            <Link
               key={n.href}
               href={n.href}
               className={s.mobileLink}
@@ -82,13 +83,13 @@ export function Header() {
             >
               <span className="label">{String(i + 1).padStart(2, "0")}</span>
               {n.label}
-            </a>
+            </Link>
           ))}
         </nav>
         <div className={s.mobileFoot}>
-          <a href="#contact" className="btn btn--primary btn--lg" onClick={() => setOpen(false)}>
+          <Link href="/#contact" className="btn btn--primary btn--lg" onClick={() => setOpen(false)}>
             Записатися на консультацію
-          </a>
+          </Link>
           <a href={site.contacts.phoneHref} className={s.mobilePhone}>
             <Phone /> {site.contacts.phoneDisplay}
           </a>

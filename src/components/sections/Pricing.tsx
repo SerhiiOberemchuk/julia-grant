@@ -1,3 +1,4 @@
+import Link from "next/link";
 import { site } from "@/content/site";
 import { Check, ArrowRight } from "@/components/ui/Icons";
 import s from "./Pricing.module.css";
@@ -26,10 +27,15 @@ export function Pricing() {
                 </li>
               ))}
             </ul>
-            <a href="#contact" className="btn btn--primary btn--lg">
-              {p.cta}
-              <ArrowRight className="btn__icon btn__icon--arrow" />
-            </a>
+            <div className={s.actions}>
+              <a href="#contact" className="btn btn--primary btn--lg">
+                {p.cta}
+                <ArrowRight className="btn__icon btn__icon--arrow" />
+              </a>
+              <Link href="/tarify" className={s.link}>
+                Переглянути тарифи
+              </Link>
+            </div>
           </div>
         </div>
       </div>

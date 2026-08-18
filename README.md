@@ -17,11 +17,34 @@ npm run dev                  # http://localhost:3000
 
 `npm run build && npm start` — production. `npm run lint` — ESLint.
 
+## Структура
+
+```
+src/
+  app/
+    layout.tsx        спільна оболонка: Header + main + Footer + MobileBar
+    page.tsx          головна (тільки секції)
+    oferta/           договір публічної оферти
+    privacy/          політика конфіденційності
+    tarify/           тарифи на послуги
+    api/lead/         прийом заявок з форми
+  components/
+    sections/         секції головної (Hero, Programs, Calculator, …)
+    legal/            оболонка правових сторінок (LegalPage)
+    ui/               дрібні власні компоненти (CountUp, Icons, MobileBar, …)
+  content/site.ts     увесь контент і юридичні реквізити
+  lib/                analytics (Google Ads), leadDirection (вибір напряму)
+```
+
+Усі сторінки рендеряться в спільному layout — Header і Footer однакові скрізь,
+переходи між сторінками клієнтські (`next/link`), без перезавантаження.
+
 ## Де що правити
 
 | Що | Де |
 |---|---|
 | Усі тексти, цифри, контакти, FAQ, кейси, відгуки | `src/content/site.ts` |
+| Реквізити ФОП, тарифи, дати редакцій документів | `src/content/site.ts` → `legal` |
 | Фото | `public/images/` (замінити `julia-placeholder.svg` і шляхи в `Hero.tsx` / `About.tsx`) |
 | Скріни погоджених заявок | `public/cases/` + масив `cases.items` |
 | Кольори, шрифти, відступи, кнопки | `src/app/globals.css` |

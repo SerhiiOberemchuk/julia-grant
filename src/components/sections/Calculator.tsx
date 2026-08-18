@@ -3,6 +3,7 @@
 import { useEffect, useMemo, useRef, useState } from "react";
 import { site } from "@/content/site";
 import { ArrowRight, Check } from "@/components/ui/Icons";
+import { PickDirection } from "@/components/ui/PickDirection";
 import s from "./Calculator.module.css";
 
 const fmt = new Intl.NumberFormat("uk-UA");
@@ -178,10 +179,10 @@ export function Calculator() {
               </dl>
             </div>
             <div className={s.resultBottom}>
-              <a href="#contact" className="btn btn--light btn--lg">
+              <PickDirection direction={site.contact.directionByCalc[dirId] ?? ""} className="btn btn--light btn--lg">
                 {c.cta}
                 <ArrowRight className="btn__icon btn__icon--arrow" />
-              </a>
+              </PickDirection>
               <p className={s.disclaimer}>{c.disclaimer}</p>
             </div>
             <span className={s.resultGlow} aria-hidden="true" />
