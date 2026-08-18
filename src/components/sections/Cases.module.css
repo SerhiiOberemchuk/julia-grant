@@ -1,0 +1,150 @@
+.section {
+  background: var(--paper-2);
+  overflow: clip;
+}
+
+.rail {
+  overflow-x: auto;
+  overscroll-behavior-x: contain;
+  scroll-snap-type: x mandatory;
+  scrollbar-width: none;
+  padding-block: 0.75rem;
+}
+
+.rail::-webkit-scrollbar {
+  display: none;
+}
+
+.list {
+  display: grid;
+  grid-auto-flow: column;
+  grid-auto-columns: min(78vw, 300px);
+  gap: 1rem;
+}
+
+@media (min-width: 1024px) {
+  .rail {
+    overflow: visible;
+  }
+  .list {
+    grid-auto-flow: row;
+    grid-template-columns: repeat(3, 1fr);
+    gap: 1.5rem;
+  }
+}
+
+.card {
+  scroll-snap-align: start;
+  display: grid;
+  gap: 1rem;
+  background: var(--white);
+  border: 1px solid var(--line);
+  border-radius: var(--radius-lg);
+  padding: 1rem;
+  box-shadow: var(--shadow-soft);
+  transform: rotate(var(--tilt, 0deg));
+  transition: transform 0.5s var(--ease-out), box-shadow 0.5s var(--ease-out);
+}
+
+@media (hover: hover) {
+  .card:hover {
+    transform: rotate(0deg) translateY(-4px);
+    box-shadow: var(--shadow-lift);
+  }
+}
+
+.doc {
+  position: relative;
+  aspect-ratio: 4 / 3;
+  border-radius: var(--radius-md);
+  background: var(--paper);
+  border: 1px solid var(--line);
+  padding: 1rem;
+  overflow: hidden;
+  display: grid;
+  gap: 0.9rem;
+  align-content: start;
+}
+
+.docHead {
+  display: flex;
+  gap: 0.5rem;
+}
+
+.docHead span {
+  height: 8px;
+  border-radius: 4px;
+  background: var(--paper-3);
+}
+
+.docHead span:first-child {
+  width: 40%;
+}
+.docHead span:last-child {
+  width: 20%;
+}
+
+.docLines {
+  display: grid;
+  gap: 0.5rem;
+}
+
+.docLines i {
+  display: block;
+  height: 5px;
+  border-radius: 3px;
+  background: var(--paper-3);
+}
+
+.stamp {
+  position: absolute;
+  right: 6%;
+  bottom: 6%;
+  transform: rotate(-14deg);
+  mix-blend-mode: multiply;
+  opacity: 0.9;
+}
+
+.meta {
+  display: grid;
+  gap: 0.15rem;
+  padding: 0 0.25rem 0.25rem;
+}
+
+.direction {
+  font-family: var(--font-mono);
+  font-size: 0.68rem;
+  letter-spacing: 0.14em;
+  text-transform: uppercase;
+  color: var(--green);
+}
+
+.sum {
+  font-family: var(--font-display);
+  font-weight: 700;
+  font-size: 1.5rem;
+  letter-spacing: -0.02em;
+  line-height: 1.1;
+}
+
+.niche {
+  font-weight: 600;
+}
+
+.region {
+  font-size: 0.85rem;
+  color: var(--ink-3);
+}
+
+.hint {
+  margin-top: 0.5rem;
+  font-family: var(--font-mono);
+  font-size: 0.72rem;
+  letter-spacing: 0.1em;
+}
+
+@media (min-width: 1024px) {
+  .hint {
+    display: none;
+  }
+}

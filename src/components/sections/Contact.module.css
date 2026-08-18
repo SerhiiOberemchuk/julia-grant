@@ -1,0 +1,299 @@
+.section {
+  background: var(--paper-2);
+}
+
+.grid {
+  display: grid;
+  gap: 2.5rem;
+  align-items: start;
+}
+
+@media (min-width: 1000px) {
+  .grid {
+    grid-template-columns: minmax(0, 5fr) minmax(0, 7fr);
+    gap: 4rem;
+  }
+}
+
+.copy {
+  display: grid;
+  gap: 1.25rem;
+}
+
+.messengers {
+  display: grid;
+  gap: 1rem;
+  margin-top: 0.5rem;
+  padding-top: 1.5rem;
+  border-top: 1px solid var(--line);
+}
+
+.messengersTitle {
+  font-weight: 700;
+}
+
+.msgRow {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 0.5rem;
+}
+
+.msg {
+  display: inline-flex;
+  align-items: center;
+  gap: 0.5rem;
+  padding: 0.65rem 1rem;
+  border-radius: 999px;
+  background: var(--white);
+  border: 1px solid var(--line);
+  font-weight: 600;
+  font-size: 0.92rem;
+  transition: transform 0.3s var(--ease-out), border-color 0.3s, background-color 0.3s, color 0.3s;
+}
+
+.msg svg {
+  color: var(--green);
+  transition: color 0.3s;
+}
+
+@media (hover: hover) {
+  .msg:hover {
+    transform: translateY(-2px);
+    background: var(--ink);
+    border-color: var(--ink);
+    color: var(--white);
+  }
+  .msg:hover svg {
+    color: var(--mint);
+  }
+}
+
+.contacts {
+  display: grid;
+  gap: 0.6rem;
+}
+
+.contacts li {
+  display: flex;
+  align-items: center;
+  gap: 0.6rem;
+  font-weight: 500;
+}
+
+.contacts svg {
+  color: var(--ink-3);
+}
+
+/* Форма */
+.formWrap {
+  background: var(--white);
+  border: 1px solid var(--line);
+  border-radius: var(--radius-xl);
+  box-shadow: var(--shadow-lift);
+  padding: clamp(1.4rem, 3.5vw, 2.5rem);
+}
+
+.form {
+  display: grid;
+  gap: 1.25rem;
+}
+
+.row {
+  display: grid;
+  gap: 1.25rem;
+}
+
+@media (min-width: 640px) {
+  .row {
+    grid-template-columns: 1fr 1fr;
+  }
+}
+
+.field {
+  display: grid;
+  gap: 0.45rem;
+  border: 0;
+  padding: 0;
+  margin: 0;
+  min-width: 0;
+}
+
+.fieldLabel {
+  font-family: var(--font-mono);
+  font-size: 0.7rem;
+  letter-spacing: 0.14em;
+  text-transform: uppercase;
+  color: var(--ink-3);
+  padding: 0;
+}
+
+.field > input,
+.field > textarea {
+  width: 100%;
+  border: 0;
+  border-bottom: 1.5px solid var(--line-strong);
+  background: transparent;
+  padding: 0.7rem 0;
+  font-size: 1.05rem;
+  border-radius: 0;
+  transition: border-color 0.3s;
+  resize: vertical;
+}
+
+.field > input::placeholder,
+.field > textarea::placeholder {
+  color: rgba(16, 21, 28, 0.32);
+}
+
+.field > input:focus,
+.field > textarea:focus {
+  outline: none;
+  border-bottom-color: var(--green);
+}
+
+.fieldError > input {
+  border-bottom-color: var(--danger);
+}
+
+.err {
+  font-style: normal;
+  font-size: 0.8rem;
+  color: var(--danger);
+}
+
+.pills {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 0.5rem;
+  padding-top: 0.25rem;
+}
+
+.pill {
+  padding: 0.55rem 0.95rem;
+  border-radius: 999px;
+  border: 1px solid var(--line-strong);
+  font-size: 0.9rem;
+  font-weight: 500;
+  cursor: pointer;
+  transition: background-color 0.3s, border-color 0.3s, color 0.3s;
+  user-select: none;
+}
+
+.pill:has(:focus-visible) {
+  outline: 2px solid var(--green);
+  outline-offset: 2px;
+}
+
+.pillActive {
+  background: var(--ink);
+  border-color: var(--ink);
+  color: var(--white);
+}
+
+.hp {
+  position: absolute;
+  left: -9999px;
+  width: 1px;
+  height: 1px;
+  overflow: hidden;
+}
+
+.consent {
+  display: flex;
+  align-items: flex-start;
+  gap: 0.7rem;
+  font-size: 0.86rem;
+  color: var(--ink-2);
+  cursor: pointer;
+}
+
+.consent input {
+  position: absolute;
+  opacity: 0;
+  width: 1px;
+  height: 1px;
+}
+
+.consent a {
+  text-decoration: underline;
+  text-underline-offset: 2px;
+}
+
+.checkbox {
+  flex: none;
+  width: 20px;
+  height: 20px;
+  margin-top: 0.1rem;
+  border-radius: 6px;
+  border: 1.5px solid var(--line-strong);
+  display: grid;
+  place-items: center;
+  color: transparent;
+  transition: background-color 0.25s, border-color 0.25s, color 0.25s;
+}
+
+.consent input:checked + .checkbox {
+  background: var(--green);
+  border-color: var(--green);
+  color: var(--white);
+}
+
+.consent input:focus-visible + .checkbox {
+  outline: 2px solid var(--green);
+  outline-offset: 2px;
+}
+
+.consentError .checkbox {
+  border-color: var(--danger);
+}
+
+.submit {
+  justify-self: start;
+  margin-top: 0.25rem;
+}
+
+@media (max-width: 480px) {
+  .submit {
+    width: 100%;
+  }
+}
+
+.submit:disabled {
+  opacity: 0.7;
+  cursor: progress;
+}
+
+.formError {
+  color: var(--danger);
+  font-size: 0.9rem;
+}
+
+/* Успіх */
+.success {
+  display: grid;
+  gap: 1rem;
+  justify-items: start;
+  padding: 1rem 0;
+  animation: pop 0.6s var(--ease-out);
+}
+
+.successIcon {
+  width: 60px;
+  height: 60px;
+  border-radius: 999px;
+  display: grid;
+  place-items: center;
+  background: var(--mint);
+  color: var(--green);
+}
+
+@keyframes pop {
+  from {
+    opacity: 0;
+    transform: scale(0.96);
+  }
+  to {
+    opacity: 1;
+    transform: none;
+  }
+}

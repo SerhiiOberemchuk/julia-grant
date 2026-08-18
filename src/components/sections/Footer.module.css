@@ -1,0 +1,144 @@
+.footer {
+  background: var(--ink);
+  color: var(--paper);
+  padding: clamp(3rem, 6vw, 5rem) 0 calc(2rem + 72px);
+  border-radius: var(--radius-xl) var(--radius-xl) 0 0;
+}
+
+@media (min-width: 900px) {
+  .footer {
+    padding-bottom: 2.5rem;
+  }
+}
+
+.grid {
+  display: grid;
+  gap: 2rem;
+  padding-bottom: 2rem;
+  border-bottom: 1px solid rgba(245, 241, 234, 0.14);
+}
+
+@media (min-width: 900px) {
+  .grid {
+    grid-template-columns: 1.2fr 1.6fr 1fr;
+    align-items: start;
+  }
+}
+
+.brand {
+  display: grid;
+  gap: 0.2rem;
+}
+
+.name {
+  font-family: var(--font-display);
+  font-weight: 600;
+  font-size: 1.5rem;
+}
+
+.tag {
+  font-family: var(--font-mono);
+  font-size: 0.72rem;
+  letter-spacing: 0.12em;
+  text-transform: uppercase;
+  color: var(--mint);
+}
+
+.loc {
+  margin-top: 0.5rem;
+  font-size: 0.9rem;
+  color: rgba(245, 241, 234, 0.6) !important;
+}
+
+.nav {
+  display: grid;
+  grid-template-columns: repeat(2, minmax(0, 1fr));
+  gap: 0.6rem 1.5rem;
+}
+
+@media (min-width: 640px) {
+  .nav {
+    grid-template-columns: repeat(3, minmax(0, 1fr));
+  }
+}
+
+.nav a {
+  color: rgba(245, 241, 234, 0.8);
+  font-size: 0.95rem;
+  transition: color 0.3s;
+}
+
+.nav a:hover {
+  color: var(--white);
+}
+
+.social {
+  display: flex;
+  align-items: center;
+  flex-wrap: wrap;
+  gap: 0.6rem;
+}
+
+@media (min-width: 900px) {
+  .social {
+    justify-content: flex-end;
+  }
+}
+
+.social a {
+  width: 44px;
+  height: 44px;
+  border-radius: 999px;
+  border: 1px solid rgba(245, 241, 234, 0.25);
+  display: grid;
+  place-items: center;
+  transition: background-color 0.3s, color 0.3s, transform 0.3s var(--ease-out);
+}
+
+.social a:hover {
+  background: var(--paper);
+  color: var(--ink);
+  transform: translateY(-2px);
+}
+
+.social .phone {
+  width: auto;
+  padding: 0 1rem;
+  font-weight: 600;
+  font-variant-numeric: tabular-nums;
+}
+
+.legal {
+  display: grid;
+  gap: 0.9rem;
+  padding-top: 1.75rem;
+  font-size: 0.82rem;
+  color: rgba(245, 241, 234, 0.6);
+}
+
+.disclaimer {
+  max-width: 80ch;
+  line-height: 1.55;
+}
+
+.sources a {
+  display: inline-flex;
+  align-items: center;
+  gap: 0.15rem;
+  color: rgba(245, 241, 234, 0.85);
+  text-decoration: underline;
+  text-underline-offset: 2px;
+}
+
+.bottom {
+  display: flex;
+  justify-content: space-between;
+  flex-wrap: wrap;
+  gap: 0.5rem 1.5rem;
+  padding-top: 0.5rem;
+}
+
+.bottom a {
+  text-decoration: underline;
+  text-underline-offset: 2px;
+}

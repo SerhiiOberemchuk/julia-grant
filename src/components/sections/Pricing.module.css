@@ -1,0 +1,74 @@
+.band {
+  display: grid;
+  gap: 2rem;
+  padding: clamp(1.75rem, 4vw, 3.25rem);
+  background: var(--marker-2);
+  border: 1px solid rgba(16, 21, 28, 0.08);
+  border-radius: var(--radius-xl);
+  position: relative;
+  overflow: hidden;
+}
+
+.band::after {
+  /* декоративна «купюра»-хвиля */
+  content: "";
+  position: absolute;
+  inset: auto -10% -60% auto;
+  width: 60%;
+  aspect-ratio: 1;
+  border-radius: 999px;
+  border: 60px solid var(--marker);
+  opacity: 0.35;
+  pointer-events: none;
+}
+
+@media (min-width: 900px) {
+  .band {
+    grid-template-columns: minmax(0, 1.3fr) minmax(0, 1fr);
+    align-items: center;
+  }
+}
+
+.copy {
+  display: grid;
+  gap: 1rem;
+  position: relative;
+  z-index: 1;
+}
+
+.text {
+  color: var(--ink-2);
+  max-width: 56ch;
+  font-size: 1.02rem;
+}
+
+.side {
+  position: relative;
+  z-index: 1;
+  display: grid;
+  gap: 1.5rem;
+  justify-items: start;
+}
+
+.list {
+  display: grid;
+  gap: 0.7rem;
+}
+
+.list li {
+  display: flex;
+  align-items: center;
+  gap: 0.7rem;
+  font-weight: 600;
+}
+
+.tick {
+  width: 24px;
+  height: 24px;
+  border-radius: 999px;
+  display: grid;
+  place-items: center;
+  background: var(--ink);
+  color: var(--marker);
+  flex: none;
+}

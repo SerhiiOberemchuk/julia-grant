@@ -1,0 +1,236 @@
+.header {
+  position: fixed;
+  inset: 0 0 auto 0;
+  z-index: 100;
+  transition:
+    background-color 0.4s var(--ease-out),
+    box-shadow 0.4s var(--ease-out),
+    backdrop-filter 0.4s var(--ease-out);
+}
+
+.scrolled {
+  background: rgba(245, 241, 234, 0.82);
+  backdrop-filter: blur(14px) saturate(1.2);
+  -webkit-backdrop-filter: blur(14px) saturate(1.2);
+  box-shadow: 0 1px 0 var(--line);
+}
+
+.bar {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: 1.5rem;
+  height: 76px;
+  transition: height 0.4s var(--ease-out);
+}
+
+.scrolled .bar {
+  height: 66px;
+}
+
+.logo {
+  display: inline-flex;
+  align-items: center;
+  gap: 0.7rem;
+  color: var(--ink);
+}
+
+.logoMark {
+  width: 40px;
+  height: 40px;
+  color: var(--green);
+  transition: transform 0.5s var(--ease-out);
+}
+
+.logo:hover .logoMark {
+  transform: rotate(-12deg);
+}
+
+.logoText {
+  display: grid;
+  line-height: 1.05;
+}
+
+.logoText b {
+  font-family: var(--font-display);
+  font-weight: 600;
+  font-size: 1.05rem;
+  letter-spacing: -0.01em;
+}
+
+.logoText i {
+  font-style: normal;
+  font-family: var(--font-mono);
+  font-size: 0.66rem;
+  letter-spacing: 0.08em;
+  text-transform: uppercase;
+  color: var(--ink-3);
+}
+
+.nav {
+  display: none;
+  gap: 0.25rem;
+}
+
+@media (min-width: 1180px) {
+  .nav {
+    display: flex;
+  }
+}
+
+.navLink {
+  position: relative;
+  white-space: nowrap;
+  padding: 0.5rem 0.75rem;
+  font-size: 0.92rem;
+  font-weight: 500;
+  color: var(--ink-2);
+  border-radius: 999px;
+  transition: color 0.3s, background-color 0.3s;
+}
+
+.navLink:hover {
+  color: var(--ink);
+  background: rgba(16, 21, 28, 0.05);
+}
+
+.actions {
+  display: flex;
+  align-items: center;
+  gap: 0.75rem;
+}
+
+.phone {
+  display: none;
+  align-items: center;
+  gap: 0.5rem;
+  font-weight: 600;
+  font-size: 0.95rem;
+  color: var(--ink);
+  font-variant-numeric: tabular-nums;
+  white-space: nowrap;
+}
+
+@media (min-width: 900px) {
+  .phone {
+    display: inline-flex;
+  }
+}
+
+.cta {
+  display: none;
+  min-height: 46px;
+  padding-inline: 1.15rem;
+}
+
+@media (min-width: 640px) {
+  .cta {
+    display: inline-flex;
+  }
+}
+
+/* Бургер */
+.burger {
+  position: relative;
+  width: 46px;
+  height: 46px;
+  border-radius: 999px;
+  border: 1.5px solid var(--line-strong);
+  display: grid;
+  place-items: center;
+  transition: background-color 0.3s, border-color 0.3s;
+}
+
+.burger span {
+  position: absolute;
+  width: 18px;
+  height: 2px;
+  background: var(--ink);
+  border-radius: 2px;
+  transition: transform 0.4s var(--ease-out), background-color 0.3s;
+}
+
+.burger span:first-child {
+  transform: translateY(-4px);
+}
+.burger span:last-child {
+  transform: translateY(4px);
+}
+
+.burgerOpen {
+  background: var(--ink);
+  border-color: var(--ink);
+}
+.burgerOpen span {
+  background: var(--white);
+}
+.burgerOpen span:first-child {
+  transform: rotate(45deg);
+}
+.burgerOpen span:last-child {
+  transform: rotate(-45deg);
+}
+
+@media (min-width: 1180px) {
+  .burger {
+    display: none;
+  }
+}
+
+/* Мобільне меню на весь екран */
+.mobile {
+  position: fixed;
+  inset: 0;
+  z-index: -1;
+  background: var(--paper);
+  display: flex;
+  flex-direction: column;
+  justify-content: space-between;
+  padding: 100px var(--gutter) 2rem;
+  clip-path: circle(0% at calc(100% - 44px) 38px);
+  transition: clip-path 0.7s var(--ease-in-out);
+  visibility: hidden;
+}
+
+.mobileOpen {
+  clip-path: circle(150% at calc(100% - 44px) 38px);
+  visibility: visible;
+}
+
+.mobileNav {
+  display: grid;
+  gap: 0.2rem;
+}
+
+.mobileLink {
+  display: flex;
+  align-items: baseline;
+  gap: 1rem;
+  padding: 0.55rem 0;
+  font-family: var(--font-display);
+  font-size: clamp(1.5rem, 6vw, 2.2rem);
+  font-weight: 500;
+  border-bottom: 1px solid var(--line);
+  opacity: 0;
+  transform: translateY(14px);
+  transition: opacity 0.5s var(--ease-out), transform 0.5s var(--ease-out);
+}
+
+.mobileOpen .mobileLink {
+  opacity: 1;
+  transform: none;
+}
+
+.mobileFoot {
+  display: grid;
+  gap: 0.9rem;
+  justify-items: start;
+}
+
+.mobilePhone {
+  display: inline-flex;
+  gap: 0.5rem;
+  align-items: center;
+  font-weight: 600;
+  font-size: 1.1rem;
+}

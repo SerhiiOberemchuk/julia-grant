@@ -1,0 +1,255 @@
+.hero {
+  position: relative;
+  padding-top: calc(76px + clamp(2.5rem, 6vw, 5rem));
+  padding-bottom: clamp(2.5rem, 6vw, 5rem);
+  overflow: clip;
+}
+
+/* тонка «міліметрівка» — натяк на фінансовий документ */
+.grid {
+  position: absolute;
+  inset: 0;
+  pointer-events: none;
+  background-image:
+    linear-gradient(var(--line) 1px, transparent 1px),
+    linear-gradient(90deg, var(--line) 1px, transparent 1px);
+  background-size: 64px 64px;
+  opacity: 0.35;
+  mask-image: radial-gradient(ellipse 80% 70% at 70% 30%, #000 20%, transparent 75%);
+  -webkit-mask-image: radial-gradient(ellipse 80% 70% at 70% 30%, #000 20%, transparent 75%);
+}
+
+.inner {
+  position: relative;
+  display: grid;
+  gap: clamp(2rem, 5vw, 4rem);
+  align-items: center;
+}
+
+@media (min-width: 1024px) {
+  .inner {
+    grid-template-columns: minmax(0, 7fr) minmax(0, 5fr);
+  }
+}
+
+.copy {
+  display: grid;
+  gap: clamp(1.1rem, 2.5vw, 1.75rem);
+  justify-items: start;
+}
+
+.kicker {
+  color: var(--green);
+}
+
+.title {
+  font-size: var(--fs-hero);
+  max-width: 14ch;
+}
+
+.title :global(.marker) {
+  white-space: nowrap;
+}
+
+.titleSoft {
+  display: block;
+  margin-top: 0.55em;
+  font-family: var(--font-body);
+  font-size: max(1.05rem, 0.42em);
+  font-weight: 500;
+  line-height: 1.3;
+  letter-spacing: 0;
+  color: var(--ink-3);
+  max-width: 24ch;
+}
+
+.lead {
+  max-width: 560px;
+}
+
+.ctas {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 0.75rem;
+}
+
+@media (max-width: 480px) {
+  .ctas {
+    width: 100%;
+  }
+  .ctas :global(.btn) {
+    width: 100%;
+  }
+}
+
+.facts {
+  display: grid;
+  grid-template-columns: repeat(3, minmax(0, 1fr));
+  gap: 1rem;
+  padding-top: 0.5rem;
+  border-top: 1px solid var(--line);
+  width: 100%;
+  margin-top: 0.5rem;
+}
+
+.fact {
+  display: grid;
+  gap: 0.15rem;
+  padding-top: 0.9rem;
+  min-width: 0;
+}
+
+@media (min-width: 640px) {
+  .facts {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 1.5rem 2.5rem;
+  }
+}
+
+.factValue {
+  font-family: var(--font-display);
+  font-size: clamp(1.4rem, 1rem + 1.6vw, 2rem);
+  font-weight: 600;
+  letter-spacing: -0.02em;
+  line-height: 1;
+}
+
+.factLabel {
+  font-size: 0.8rem;
+  line-height: 1.3;
+  color: var(--ink-3);
+}
+
+@media (min-width: 640px) {
+  .factLabel {
+    font-size: var(--fs-small);
+  }
+}
+
+/* Візуал */
+.visual {
+  position: relative;
+  max-width: 480px;
+  width: 100%;
+  margin-inline: auto;
+}
+
+.photoCard {
+  position: relative;
+  border-radius: var(--radius-xl);
+  overflow: hidden;
+  aspect-ratio: 4 / 5;
+  background: var(--mint-2);
+  box-shadow: var(--shadow-lift);
+  border: 1px solid var(--line);
+}
+
+.photo {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+}
+
+.stamp {
+  position: absolute;
+  right: 6%;
+  bottom: 6%;
+  transform: rotate(-12deg);
+  filter: drop-shadow(0 6px 14px rgba(16, 21, 28, 0.15));
+  animation: stampIn 0.9s var(--ease-out) 0.7s both;
+  mix-blend-mode: multiply;
+}
+
+@keyframes stampIn {
+  0% {
+    opacity: 0;
+    transform: rotate(-24deg) scale(1.6);
+  }
+  60% {
+    opacity: 1;
+    transform: rotate(-10deg) scale(0.96);
+  }
+  100% {
+    transform: rotate(-12deg) scale(1);
+  }
+}
+
+.ticket {
+  position: absolute;
+  display: flex;
+  align-items: center;
+  gap: 0.7rem;
+  padding: 0.7rem 0.95rem 0.7rem 0.75rem;
+  background: var(--white);
+  border: 1px solid var(--line);
+  border-radius: 14px;
+  box-shadow: var(--shadow-lift);
+  animation: float 6s ease-in-out infinite;
+}
+
+.ticketA {
+  left: -6%;
+  top: 12%;
+  animation-delay: 0s;
+}
+
+.ticketB {
+  right: -5%;
+  bottom: 38%;
+  animation-delay: -3s;
+}
+
+@media (max-width: 1023px) {
+  .ticketA {
+    left: -2%;
+  }
+  .ticketB {
+    right: -2%;
+  }
+}
+
+@media (max-width: 400px) {
+  .ticket {
+    display: none;
+  }
+}
+
+.ticketIcon {
+  width: 30px;
+  height: 30px;
+  border-radius: 999px;
+  display: grid;
+  place-items: center;
+  background: var(--mint);
+  color: var(--green);
+  flex: none;
+}
+
+.ticketText {
+  display: grid;
+  line-height: 1.2;
+}
+
+.ticketText b {
+  font-size: 0.85rem;
+  font-weight: 700;
+}
+
+.ticketText i {
+  font-style: normal;
+  font-family: var(--font-mono);
+  font-size: 0.68rem;
+  color: var(--ink-3);
+  letter-spacing: 0.02em;
+}
+
+@keyframes float {
+  0%,
+  100% {
+    transform: translateY(0);
+  }
+  50% {
+    transform: translateY(-9px);
+  }
+}

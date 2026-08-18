@@ -1,0 +1,140 @@
+.tableWrap {
+  overflow-x: auto;
+  border: 1px solid var(--line);
+  border-radius: var(--radius-lg);
+  background: var(--white);
+  box-shadow: var(--shadow-soft);
+}
+
+.table {
+  width: 100%;
+  border-collapse: separate;
+  border-spacing: 0;
+}
+
+.table th,
+.table td {
+  padding: 1rem 1.25rem;
+  text-align: left;
+  vertical-align: top;
+  border-bottom: 1px solid var(--line);
+  font-size: 0.97rem;
+}
+
+.table tbody tr:last-child th,
+.table tbody tr:last-child td {
+  border-bottom: 0;
+}
+
+.thKey,
+.thA,
+.thB {
+  font-family: var(--font-mono);
+  font-size: 0.72rem;
+  letter-spacing: 0.14em;
+  text-transform: uppercase;
+  color: var(--ink-3);
+  font-weight: 500;
+  background: var(--paper);
+}
+
+.thB {
+  background: var(--green);
+  color: var(--white);
+}
+
+.thBInner {
+  display: inline-flex;
+  align-items: center;
+  gap: 0.5rem;
+}
+
+.key {
+  font-weight: 700;
+  width: 24%;
+}
+
+.a {
+  color: var(--ink-3);
+  width: 38%;
+}
+
+.b {
+  font-weight: 600;
+  background: var(--mint-2);
+  position: relative;
+}
+
+.b::before {
+  content: "";
+  position: absolute;
+  left: 0;
+  top: 0;
+  bottom: 0;
+  width: 3px;
+  background: var(--green);
+  opacity: 0.6;
+}
+
+/* Мобільний вигляд: кожен рядок — картка з підписами колонок */
+@media (max-width: 759px) {
+  .table thead {
+    display: none;
+  }
+  .table,
+  .table tbody,
+  .table tr,
+  .table th,
+  .table td {
+    display: block;
+    width: auto;
+  }
+  .table tr {
+    padding: 1rem 1.1rem;
+    border-bottom: 1px solid var(--line);
+    display: grid;
+    gap: 0.5rem;
+  }
+  .table tr:last-child {
+    border-bottom: 0;
+  }
+  .table th,
+  .table td {
+    padding: 0;
+    border-bottom: 0;
+  }
+  .key {
+    font-family: var(--font-display);
+    font-weight: 500;
+    font-size: 1rem;
+    margin-bottom: 0.25rem;
+  }
+  .a,
+  .b {
+    display: grid !important;
+    grid-template-columns: 5.5rem 1fr;
+    gap: 0.75rem;
+    align-items: baseline;
+    font-size: 0.92rem;
+  }
+  .a::before,
+  .b::before {
+    content: attr(data-label);
+    font-family: var(--font-mono);
+    font-size: 0.66rem;
+    letter-spacing: 0.1em;
+    text-transform: uppercase;
+    color: var(--ink-3);
+    position: static;
+    width: auto;
+    background: none;
+    opacity: 1;
+  }
+  .b {
+    background: transparent;
+    color: var(--green);
+  }
+  .b::before {
+    color: var(--green);
+  }
+}
