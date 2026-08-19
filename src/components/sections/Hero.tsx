@@ -57,7 +57,6 @@ export function Hero() {
               width={1000}
               height={1250}
               priority
-              quality={88}
               className={s.photo}
               sizes="(min-width: 1024px) 40vw, (min-width: 768px) 520px, 92vw"
             />

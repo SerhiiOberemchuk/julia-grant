@@ -1,7 +1,6 @@
 "use client";
 
 import type { ReactNode } from "react";
-import Link from "next/link";
 import { setLeadDirection, goToContact } from "@/lib/leadDirection";
 
 type Props = {
@@ -12,22 +11,22 @@ type Props = {
 };
 
 /**
- * Кнопка «Підходить мені»: запам'ятовує напрям, обирає відповідну радіокнопку
- * у формі й плавно прокручує до неї. Якщо форми на сторінці немає
- * (правові сторінки) — Link виконує звичайний перехід на /#contact.
+ * Кнопка «Підходить мені»: запам'ятовує напрям, обирає відповідну
+ * радіокнопку у формі й плавно прокручує до неї. Використовується лише
+ * на головній, де форма завжди є, тому це звичайний якір — однаковий
+ * на сервері й клієнті.
  */
 export function PickDirection({ direction, className, children }: Props) {
   return (
-    <Link
-      href="/#contact"
+    <a
+      href="#contact"
       className={className}
       onClick={(e) => {
         setLeadDirection(direction);
-        // якщо форма є на цій сторінці — гортаємо самі, інакше лишаємо перехід Link
         if (goToContact()) e.preventDefault();
       }}
     >
       {children}
-    </Link>
+    </a>
   );
 }

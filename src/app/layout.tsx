@@ -66,10 +66,6 @@ export default function RootLayout({ children }: { children: React.ReactNode }) 
       lang="uk"
       className={`${unbounded.variable} ${manrope.variable} ${mono.variable}`}
     >
-      <head>
-        {/* позначаємо, що JS працює, до гідрації: без цього reveal-елементи були б невидимі до завантаження бандла */}
-        <script dangerouslySetInnerHTML={{ __html: "document.documentElement.classList.add(js)" }} />
-      </head>
       <body className="grain">
         <RevealObserver />
         <Header />
