@@ -21,6 +21,14 @@
   }
 }
 
+/* Поки відкрите меню — хром хедера прибирається, щоб панель була суцільною */
+.header.menuOpen {
+  background: rgba(245, 241, 234, 0);
+  -webkit-backdrop-filter: none;
+  backdrop-filter: none;
+  box-shadow: none;
+}
+
 .bar {
   display: flex;
   align-items: center;
@@ -187,19 +195,22 @@
 .mobile {
   position: fixed;
   inset: 0;
-  z-index: -1;
+  /* нижче смуги хедера (100), щоб логотип і бургер лишались зверху */
+  z-index: 99;
   background: var(--paper);
   display: flex;
   flex-direction: column;
   justify-content: space-between;
   padding: 100px var(--gutter) 2rem;
   clip-path: circle(0% at calc(100% - 44px) 38px);
-  transition: clip-path 0.7s var(--ease-in-out);
+  /* visibility знімається лише після анімації закриття, інакше вона обрізається */
+  transition: clip-path 0.7s var(--ease-in-out), visibility 0s linear 0.7s;
   visibility: hidden;
 }
 
 .mobileOpen {
   clip-path: circle(150% at calc(100% - 44px) 38px);
+  transition: clip-path 0.7s var(--ease-in-out), visibility 0s;
   visibility: visible;
 }
 

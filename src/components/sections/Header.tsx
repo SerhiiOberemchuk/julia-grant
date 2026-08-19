@@ -25,51 +25,58 @@ export function Header() {
   }, [open]);
 
   return (
-    <header className={`${s.header} ${scrolled ? s.scrolled : ""}`}>
-      <div className={`container ${s.bar}`}>
-        <Link href="/" className={s.logo} aria-label="На головну">
-          <span className={s.logoMark} aria-hidden="true">
-            <svg viewBox="0 0 40 40" width="40" height="40">
-              <circle cx="20" cy="20" r="19" fill="none" stroke="currentColor" strokeWidth="1.5" />
-              <path d="M13 21l5 5 10-12" fill="none" stroke="currentColor" strokeWidth="2.4" strokeLinecap="round" strokeLinejoin="round" />
-            </svg>
-          </span>
-          <span className={s.logoText}>
-            <b>{site.brand.shortName}</b>
-            <i>{site.brand.tagline}</i>
-          </span>
-        </Link>
-
-        <nav className={s.nav} aria-label="Розділи сторінки">
-          {site.nav.map((n) => (
-            <Link key={n.href} href={n.href} className={s.navLink}>
-              {n.label}
-            </Link>
-          ))}
-        </nav>
-
-        <div className={s.actions}>
-          <a href={site.contacts.phoneHref} className={s.phone}>
-            <Phone width={18} height={18} />
-            <span>{site.contacts.phoneDisplay}</span>
-          </a>
-          <Link href="/#contact" className={`btn btn--primary ${s.cta}`}>
-            Консультація
-            <ArrowUpRight className="btn__icon" />
+    /*
+     * Панель меню — сусід <header>, а не його нащадок: у хедера є backdrop-filter,
+     * а він робить елемент containing block для position: fixed усередині.
+     * Всередині хедера панель стискалась би до його висоти й лишалась без фону.
+     */
+    <>
+      <header className={`${s.header} ${scrolled ? s.scrolled : ""} ${open ? s.menuOpen : ""}`}>
+        <div className={`container ${s.bar}`}>
+          <Link href="/" className={s.logo} aria-label="На головну">
+            <span className={s.logoMark} aria-hidden="true">
+              <svg viewBox="0 0 40 40" width="40" height="40">
+                <circle cx="20" cy="20" r="19" fill="none" stroke="currentColor" strokeWidth="1.5" />
+                <path d="M13 21l5 5 10-12" fill="none" stroke="currentColor" strokeWidth="2.4" strokeLinecap="round" strokeLinejoin="round" />
+              </svg>
+            </span>
+            <span className={s.logoText}>
+              <b>{site.brand.shortName}</b>
+              <i>{site.brand.tagline}</i>
+            </span>
           </Link>
-          <button
-            type="button"
-            className={`${s.burger} ${open ? s.burgerOpen : ""}`}
-            aria-expanded={open}
-            aria-controls="mobile-menu"
-            aria-label={open ? "Закрити меню" : "Відкрити меню"}
-            onClick={() => setOpen((v) => !v)}
-          >
-            <span />
-            <span />
-          </button>
+
+          <nav className={s.nav} aria-label="Розділи сторінки">
+            {site.nav.map((n) => (
+              <Link key={n.href} href={n.href} className={s.navLink}>
+                {n.label}
+              </Link>
+            ))}
+          </nav>
+
+          <div className={s.actions}>
+            <a href={site.contacts.phoneHref} className={s.phone}>
+              <Phone width={18} height={18} />
+              <span>{site.contacts.phoneDisplay}</span>
+            </a>
+            <Link href="/#contact" className={`btn btn--primary ${s.cta}`}>
+              Консультація
+              <ArrowUpRight className="btn__icon" />
+            </Link>
+            <button
+              type="button"
+              className={`${s.burger} ${open ? s.burgerOpen : ""}`}
+              aria-expanded={open}
+              aria-controls="mobile-menu"
+              aria-label={open ? "Закрити меню" : "Відкрити меню"}
+              onClick={() => setOpen((v) => !v)}
+            >
+              <span />
+              <span />
+            </button>
+          </div>
         </div>
-      </div>
+      </header>
 
       <div id="mobile-menu" className={`${s.mobile} ${open ? s.mobileOpen : ""}`} aria-hidden={!open}>
         <nav className={s.mobileNav} aria-label="Мобільне меню">
@@ -96,6 +103,6 @@ export function Header() {
           <p className="muted">{site.contacts.workHours}</p>
         </div>
       </div>
-    </header>
+    </>
   );
 }
