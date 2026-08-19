@@ -123,6 +123,7 @@ export function Calculator() {
                   value={base}
                   onChange={(e) => setBase(Number(e.target.value))}
                   className={s.slider}
+                  aria-label={c.baseLabel}
                   aria-valuetext={`${fmt.format(base)} гривень`}
                 />
               </div>

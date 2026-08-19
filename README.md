@@ -50,6 +50,7 @@ src/
 | Кольори, шрифти, відступи, кнопки | `src/app/globals.css` |
 | Секції | `src/components/sections/*` |
 | Прийом заявок | `src/app/api/lead/route.ts` (Telegram / Resend через `.env`) |
+| Картинка для соцмереж (og:image) | `src/app/opengraph-image.tsx` + шрифти в `assets/` |
 | Google Ads конверсія | `src/lib/analytics.ts` + `NEXT_PUBLIC_GADS_CONVERSION` |
 
 ## Змінні оточення
