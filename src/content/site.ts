@@ -13,7 +13,7 @@ const contacts = {
   /** ← ЗАМІНИТИ на реальні дані замовниці */
   phoneDisplay: "+380 96 762 92 52",
   phoneHref: "tel:+380967629252",
-  email: "hello@example.com",
+  email: "hello@juliagrant.com.ua", // ← поштову скриньку на домені ще треба створити в реєстратора/поштовика
   telegram: "https://t.me/username",
   viber: "viber://chat?number=%2B380967629252",
   instagram: "https://instagram.com/username",
@@ -22,7 +22,7 @@ const contacts = {
 } as const;
 
 export const site = {
-  url: process.env.NEXT_PUBLIC_SITE_URL ?? "https://example.com",
+  url: process.env.NEXT_PUBLIC_SITE_URL ?? "https://juliagrant.com.ua",
   /** Дата останньої звірки умов програми — показується у футері */
   programUpdatedAt: "18.08.2026",
 
