@@ -3,14 +3,14 @@
   border-top: 1px solid var(--line-strong);
 }
 
-@media (min-width: 760px) {
+@media (min-width: 768px) {
   .list {
     grid-template-columns: 1fr 1fr;
     column-gap: clamp(2rem, 5vw, 5rem);
   }
 }
 
-@media (min-width: 1100px) {
+@media (min-width: 1024px) {
   .list {
     grid-template-columns: 1fr 1fr 1fr;
   }

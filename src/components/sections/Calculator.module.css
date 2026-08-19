@@ -11,7 +11,7 @@
   box-shadow: var(--shadow-lift);
 }
 
-@media (min-width: 960px) {
+@media (min-width: 1024px) {
   .card {
     grid-template-columns: minmax(0, 1.25fr) minmax(0, 1fr);
   }

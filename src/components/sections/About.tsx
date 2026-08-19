@@ -17,7 +17,7 @@ export function About() {
               height={1250}
               quality={85}
               className={s.photoImg}
-              sizes="(min-width: 1024px) 440px, 90vw"
+              sizes="(min-width: 1024px) 34vw, (min-width: 768px) 440px, 92vw"
             />
           </figure>
 

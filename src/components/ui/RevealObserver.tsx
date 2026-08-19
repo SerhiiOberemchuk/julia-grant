@@ -29,7 +29,7 @@ export function RevealObserver() {
           }
         }
       },
-      { rootMargin: "0px 0px -8% 0px", threshold: 0.12 },
+      { rootMargin: "0px 0px 0px 0px", threshold: 0.08 },
     );
 
     const observeAll = () => nodes().forEach((n) => !n.hasAttribute("data-revealed") && io.observe(n));

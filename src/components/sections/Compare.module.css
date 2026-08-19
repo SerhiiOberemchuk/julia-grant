@@ -77,7 +77,7 @@
 }
 
 /* Мобільний вигляд: кожен рядок — картка з підписами колонок */
-@media (max-width: 759px) {
+@media (max-width: 767px) {
   .table thead {
     display: none;
   }

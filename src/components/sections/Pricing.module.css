@@ -22,7 +22,7 @@
   pointer-events: none;
 }
 
-@media (min-width: 900px) {
+@media (min-width: 1024px) {
   .band {
     grid-template-columns: minmax(0, 1.3fr) minmax(0, 1fr);
     align-items: center;

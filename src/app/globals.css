@@ -12,7 +12,7 @@
   --white: #fffdf9;
   --ink: #10151c;
   --ink-2: #3c4552;
-  --ink-3: #6b7482;
+  --ink-3: #5b6472; /* ≥4.8:1 на всіх фонах (AA) */
   --line: rgba(16, 21, 28, 0.12);
   --line-strong: rgba(16, 21, 28, 0.28);
   --green: #1e5a3c;
@@ -55,7 +55,7 @@
   /* Анімації */
   --ease-out: cubic-bezier(0.22, 1, 0.36, 1);
   --ease-in-out: cubic-bezier(0.65, 0, 0.35, 1);
-  --dur: 0.7s;
+  --dur: 0.5s;
 
   color-scheme: light;
 }
@@ -368,9 +368,15 @@ button {
 }
 
 /* ---------- Анімації появи (керуються IntersectionObserver) ---------- */
+/* Приховуємо лише коли JS підтвердив себе (html.js) — інакше контент видно одразу */
+html:not(.js) [data-reveal] {
+  opacity: 1 !important;
+  transform: none !important;
+}
+
 [data-reveal] {
   opacity: 0;
-  transform: translateY(22px);
+  transform: translateY(14px);
   transition:
     opacity var(--dur) var(--ease-out),
     transform var(--dur) var(--ease-out);
@@ -379,11 +385,11 @@ button {
 }
 
 [data-reveal="left"] {
-  transform: translateX(-24px);
+  transform: translateX(-16px);
 }
 
 [data-reveal="scale"] {
-  transform: scale(0.94);
+  transform: scale(0.97);
 }
 
 [data-reveal][data-revealed] {

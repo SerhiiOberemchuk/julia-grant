@@ -8,7 +8,7 @@
   align-items: start;
 }
 
-@media (min-width: 1000px) {
+@media (min-width: 1024px) {
   .grid {
     grid-template-columns: minmax(0, 5fr) minmax(0, 7fr);
     gap: 4rem;
@@ -103,7 +103,7 @@
   gap: 1.25rem;
 }
 
-@media (min-width: 640px) {
+@media (min-width: 768px) {
   .row {
     grid-template-columns: 1fr 1fr;
   }
@@ -252,7 +252,7 @@
   margin-top: 0.25rem;
 }
 
-@media (max-width: 480px) {
+@media (max-width: 559px) {
   .submit {
     width: 100%;
   }

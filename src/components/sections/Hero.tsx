@@ -10,23 +10,23 @@ export function Hero() {
     <section id="top" className={s.hero} aria-labelledby="hero-title">
       <div className={`container ${s.inner}`}>
         <div className={s.copy}>
-          <p className={`label ${s.kicker}`} data-reveal>
+          <p className={`label ${s.kicker} ${s.in}`} style={{ "--i": 0 } as React.CSSProperties}>
             {h.kicker}
           </p>
 
-          <h1 id="hero-title" className={`display ${s.title}`} data-reveal style={{ "--reveal-delay": "80ms" } as React.CSSProperties}>
+          <h1 id="hero-title" className={`display ${s.title} ${s.in}`} style={{ "--i": 1 } as React.CSSProperties}>
             {h.titleA} <span className="marker">{h.titleAmount}</span> {h.titleB}
           </h1>
 
-          <p className={s.subtitle} data-reveal style={{ "--reveal-delay": "140ms" } as React.CSSProperties}>
+          <p className={`${s.subtitle} ${s.in}`} style={{ "--i": 2 } as React.CSSProperties}>
             {h.titleC}
           </p>
 
-          <p className={`lead ${s.lead}`} data-reveal style={{ "--reveal-delay": "200ms" } as React.CSSProperties}>
+          <p className={`lead ${s.lead} ${s.in}`} style={{ "--i": 3 } as React.CSSProperties}>
             {h.lead}
           </p>
 
-          <div className={s.ctas} data-reveal style={{ "--reveal-delay": "260ms" } as React.CSSProperties}>
+          <div className={`${s.ctas} ${s.in}`} style={{ "--i": 4 } as React.CSSProperties}>
             <a href="#contact" className="btn btn--primary btn--lg">
               {h.ctaPrimary}
               <ArrowRight className="btn__icon btn__icon--arrow" />
@@ -37,7 +37,7 @@ export function Hero() {
             </a>
           </div>
 
-          <ul className={s.facts} data-reveal style={{ "--reveal-delay": "340ms" } as React.CSSProperties}>
+          <ul className={`${s.facts} ${s.in}`} style={{ "--i": 5 } as React.CSSProperties}>
             {h.facts.map((f) => (
               <li key={f.label} className={s.fact}>
                 <span className={s.factValue}>
@@ -49,7 +49,7 @@ export function Hero() {
           </ul>
         </div>
 
-        <figure className={s.visual} data-reveal="scale" style={{ "--reveal-delay": "120ms" } as React.CSSProperties}>
+        <figure className={`${s.visual} ${s.inVisual}`}>
           <div className={s.photoCard}>
             <Image
               src="/images/julia.jpg"
@@ -59,7 +59,7 @@ export function Hero() {
               priority
               quality={88}
               className={s.photo}
-              sizes="(min-width: 1024px) 480px, 90vw"
+              sizes="(min-width: 1024px) 40vw, (min-width: 768px) 520px, 92vw"
             />
             {/* статичний редакційний підпис — замість плаваючих бейджів */}
             <figcaption className={s.caption}>

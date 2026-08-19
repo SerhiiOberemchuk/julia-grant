@@ -4,7 +4,7 @@
   align-items: start;
 }
 
-@media (min-width: 960px) {
+@media (min-width: 1024px) {
   .grid {
     grid-template-columns: minmax(0, 4fr) minmax(0, 8fr);
     gap: 4rem;
@@ -105,7 +105,7 @@
   line-height: 1.65;
 }
 
-@media (max-width: 600px) {
+@media (max-width: 559px) {
   .a {
     padding-left: 0;
   }
