@@ -11,11 +11,12 @@ export function About() {
         <div className={s.visual} data-reveal="left">
           <figure className={s.photo}>
             <Image
-              src="/images/julia-placeholder.svg"
+              src="/images/julia.jpg"
               alt={a.photoAlt}
-              width={900}
-              height={1125}
-              unoptimized
+              width={1000}
+              height={1250}
+              quality={85}
+              className={s.photoImg}
               sizes="(min-width: 1024px) 440px, 90vw"
             />
           </figure>

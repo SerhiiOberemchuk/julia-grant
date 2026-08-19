@@ -32,10 +32,13 @@
   border-radius: 6px 6px 0 0;
 }
 
-.photo img {
+.photo img,
+.photoImg {
   width: 100%;
   height: 100%;
   object-fit: cover;
+  /* інший кроп того самого кадру, щоб не дублювати hero один в один */
+  object-position: 50% 18%;
 }
 
 /* «Карта фахівця»: рівні рядки, моношрифт ключів — як у документі */

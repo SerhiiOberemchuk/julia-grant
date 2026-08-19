@@ -45,7 +45,7 @@ src/
 |---|---|
 | Усі тексти, цифри, контакти, FAQ, кейси, відгуки | `src/content/site.ts` |
 | Реквізити ФОП, тарифи, дати редакцій документів | `src/content/site.ts` → `legal` |
-| Фото | `public/images/` (замінити `julia-placeholder.svg` і шляхи в `Hero.tsx` / `About.tsx`) |
+| Фото | `public/images/julia.jpg` — зараз тимчасове стокове, див. `public/images/README.md` |
 | Скріни погоджених заявок | `public/cases/` + масив `cases.items` |
 | Кольори, шрифти, відступи, кнопки | `src/app/globals.css` |
 | Секції | `src/components/sections/*` |

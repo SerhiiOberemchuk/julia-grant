@@ -52,12 +52,12 @@ export function Hero() {
         <figure className={s.visual} data-reveal="scale" style={{ "--reveal-delay": "120ms" } as React.CSSProperties}>
           <div className={s.photoCard}>
             <Image
-              src="/images/julia-placeholder.svg"
+              src="/images/julia.jpg"
               alt={h.photoAlt}
-              width={900}
-              height={1125}
+              width={1000}
+              height={1250}
               priority
-              unoptimized
+              quality={88}
               className={s.photo}
               sizes="(min-width: 1024px) 480px, 90vw"
             />
