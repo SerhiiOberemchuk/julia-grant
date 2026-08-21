@@ -30,14 +30,14 @@
 }
 
 .cardDark {
-  background: var(--green);
+  background: var(--primary);
   color: var(--white);
-  border-color: var(--green);
+  border-color: var(--primary);
 }
 
 .cardDark .for,
 .cardDark .index {
-  color: rgba(255, 253, 249, 0.72);
+  color: rgba(255, 255, 250, 0.72);
 }
 
 .head {
@@ -88,7 +88,7 @@
 }
 
 .cardDark .points {
-  border-color: rgba(255, 253, 249, 0.35);
+  border-color: rgba(255, 255, 250, 0.35);
 }
 
 .points li {
@@ -105,13 +105,13 @@
   border-radius: 999px;
   display: grid;
   place-items: center;
-  background: var(--mint);
-  color: var(--green);
+  background: var(--tint);
+  color: var(--primary);
   margin-top: 0.1rem;
 }
 
 .cardDark .tick {
-  background: rgba(255, 253, 249, 0.16);
+  background: rgba(255, 255, 250, 0.16);
   color: var(--white);
 }
 
@@ -152,5 +152,5 @@
 }
 
 .cardDark .base {
-  color: rgba(255, 253, 249, 0.7);
+  color: rgba(255, 255, 250, 0.7);
 }

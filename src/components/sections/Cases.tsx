@@ -1,12 +1,12 @@
-import Image from "next/image";
 import { site } from "@/content/site";
-import { ArrowUpRight } from "@/components/ui/Icons";
+import { CaseShot } from "@/components/ui/CaseShot";
 import s from "./Cases.module.css";
 
 /**
  * Реєстр погоджених заявок. Жодних імітацій документів:
  * лише факти рядками, а коли клієнтка додасть скріншоти рішень
- * (поле image у site.cases.items) — з’являється колонка з мініатюрами.
+ * (поле image у site.cases.items) — з’являється колонка з мініатюрами:
+ * ховер показує збільшене прев’ю, клік/тап відкриває лайтбокс.
  */
 export function Cases() {
   const c = site.cases;
@@ -52,10 +52,13 @@ export function Cases() {
                 {hasImages && (
                   <span className={s.colImg}>
                     {it.image ? (
-                      <a href={it.image} target="_blank" rel="noopener noreferrer" className={s.thumb} aria-label="Відкрити скріншот рішення">
-                        <Image src={it.image} alt={`Рішення: ${it.niche}, ${it.sum}`} width={160} height={120} sizes="80px" />
-                        <ArrowUpRight width={14} height={14} />
-                      </a>
+                      <CaseShot
+                        src={it.image}
+                        alt={`Скріншот рішення: ${it.niche}, ${it.sum}`}
+                        title={it.niche}
+                        meta={`${it.direction} · ${it.region} · ${it.year}`}
+                        sum={it.sum}
+                      />
                     ) : (
                       <span className={s.thumbEmpty} aria-hidden="true">
                         —

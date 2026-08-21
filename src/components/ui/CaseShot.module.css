@@ -1,0 +1,223 @@
+/* Мініатюра «додаток до справи» + ховер-прев’ю + лайтбокс */
+
+.thumb {
+  position: relative;
+  display: block;
+  cursor: zoom-in;
+}
+
+.frame {
+  display: block;
+  width: 48px;
+  aspect-ratio: 4 / 5;
+  border-radius: 6px;
+  overflow: hidden;
+  border: 1px solid var(--line);
+  background: var(--paper);
+  box-shadow: var(--shadow-soft);
+  transition: transform 0.3s var(--ease-out), box-shadow 0.3s var(--ease-out);
+}
+
+.thumbImg {
+  object-fit: cover;
+  object-position: top center;
+}
+
+.zoom {
+  position: absolute;
+  right: -6px;
+  bottom: -6px;
+  width: 18px;
+  height: 18px;
+  display: grid;
+  place-items: center;
+  border-radius: 999px;
+  background: var(--ink);
+  color: var(--marker);
+  font-size: 13px;
+  line-height: 1;
+  font-weight: 600;
+}
+
+@media (hover: hover) {
+  .thumb:hover .frame {
+    transform: rotate(-2deg) scale(1.06);
+    box-shadow: var(--shadow-lift);
+  }
+}
+
+/* ---------- Збільшене прев’ю при ховері (лише пристрої з курсором) ---------- */
+.pop {
+  display: none;
+}
+
+@media (hover: hover) and (min-width: 768px) {
+  .pop {
+    display: block;
+    position: absolute;
+    z-index: 40;
+    right: calc(100% + 16px);
+    top: 50%;
+    width: min(300px, 32vw);
+    padding: 6px 6px 0;
+    background: var(--white);
+    border: 1px solid var(--line);
+    border-radius: var(--radius-sm);
+    box-shadow: var(--shadow-lift);
+    pointer-events: none;
+    opacity: 0;
+    visibility: hidden;
+    transform: translateY(-50%) translateX(8px);
+    transition: opacity 0.25s var(--ease-out), transform 0.25s var(--ease-out), visibility 0s 0.25s;
+  }
+
+  .thumb:hover .pop,
+  .thumb:focus-visible .pop {
+    opacity: 1;
+    visibility: visible;
+    transform: translateY(-50%) translateX(0) rotate(-1.5deg);
+    transition-delay: 0s;
+  }
+
+  /* натуральні пропорції; дуже довгі скріншоти обрізаються знизу з натяком-градієнтом */
+  .popImg {
+    display: block;
+    width: 100%;
+    height: auto;
+    max-height: 52vh;
+    object-fit: cover;
+    object-position: top center;
+    border-radius: calc(var(--radius-sm) - 4px) calc(var(--radius-sm) - 4px) 0 0;
+  }
+
+  .popHint {
+    position: relative;
+    display: block;
+    padding: 0.5em 0.4em;
+    font-family: var(--font-mono);
+    font-size: 0.62rem;
+    letter-spacing: 0.12em;
+    text-transform: uppercase;
+    text-align: center;
+    color: var(--ink-3);
+  }
+
+  .popHint::before {
+    /* градієнт-натяк, що знизу ще є вміст */
+    content: "";
+    position: absolute;
+    left: 0;
+    right: 0;
+    bottom: 100%;
+    height: 46px;
+    background: linear-gradient(to bottom, transparent, var(--white));
+    pointer-events: none;
+  }
+}
+
+/* ---------- Лайтбокс ---------- */
+.dlg {
+  position: fixed;
+  inset: 0;
+  margin: auto;
+  border: 0;
+  padding: 0;
+  background: none;
+  max-width: none;
+  max-height: none;
+  overflow: visible;
+}
+
+.dlg::backdrop {
+  background: rgba(35, 36, 85, 0.55);
+  backdrop-filter: blur(5px);
+}
+
+.dlg[open] {
+  animation: dlg-in 0.35s var(--ease-out);
+}
+
+.dlg[open]::backdrop {
+  animation: dlg-fade 0.3s var(--ease-out);
+}
+
+@keyframes dlg-in {
+  from {
+    opacity: 0;
+    transform: translateY(14px) scale(0.97);
+  }
+}
+
+@keyframes dlg-fade {
+  from {
+    opacity: 0;
+  }
+}
+
+.dlgInner {
+  width: min(94vw, 560px);
+  max-height: min(88svh, 900px);
+  display: grid;
+  grid-template-rows: auto minmax(0, 1fr);
+  background: var(--white);
+  border-radius: var(--radius-md);
+  box-shadow: var(--shadow-lift);
+  overflow: hidden;
+}
+
+.dlgHead {
+  display: flex;
+  align-items: flex-start;
+  justify-content: space-between;
+  gap: 1rem;
+  padding: 0.9rem 1.1rem;
+  border-bottom: 1px solid var(--line);
+  background: var(--paper);
+}
+
+.dlgLabel {
+  font-family: var(--font-mono);
+  font-size: 0.62rem;
+  letter-spacing: 0.12em;
+  text-transform: uppercase;
+  color: var(--gold-deep);
+}
+
+.dlgTitle {
+  font-family: var(--font-display);
+  font-weight: 500;
+  font-size: 0.98rem;
+  margin-top: 0.25rem;
+}
+
+.close {
+  flex: none;
+  width: 36px;
+  height: 36px;
+  display: grid;
+  place-items: center;
+  border-radius: 999px;
+  border: 1px solid var(--line-strong);
+  color: var(--ink);
+  background: var(--white);
+  transition: background-color 0.25s, color 0.25s;
+}
+
+@media (hover: hover) {
+  .close:hover {
+    background: var(--ink);
+    color: var(--white);
+  }
+}
+
+.dlgBody {
+  overflow-y: auto;
+  overscroll-behavior: contain;
+  background: var(--paper-2);
+}
+
+.dlgImg {
+  display: block;
+  width: 100%;
+  height: auto;
+}

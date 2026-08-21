@@ -156,7 +156,7 @@ export function Calculator() {
 
           <div className={s.result}>
             <div className={s.resultTop}>
-              <span className="label" style={{ color: "rgba(255,253,249,.7)" }}>
+              <span className="label" style={{ color: "rgba(255,255,250,.7)" }}>
                 {c.resultLabel}
               </span>
               <p className={`num ${s.total}`} aria-live="polite">

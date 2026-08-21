@@ -11,11 +11,13 @@ export const contentType = "image/png";
 const unbounded = await readFile(join(process.cwd(), "assets/unbounded-600.ttf"));
 const mono = await readFile(join(process.cwd(), "assets/jetbrains-mono-500.ttf"));
 
-const PAPER = "#f5f1ea";
-const INK = "#10151c";
-const INK_3 = "#5b6472";
-const GREEN = "#1e5a3c";
-const LINE = "rgba(16, 21, 28, 0.14)";
+const PAPER = "#fffff0";
+const INK = "#232455";
+const INK_3 = "#5c5f86";
+const GOLD = "#ab8115";
+const GOLD_DEEP = "#8a680f";
+const MARKER = "#f0dfa6";
+const LINE = "rgba(35, 36, 85, 0.14)";
 
 /** Картка для соцмереж і месенджерів — та сама палітра й типографіка, що на сайті */
 export default function Image() {
@@ -41,16 +43,16 @@ export default function Image() {
         {/* печатка «погоджено» — той самий знак, що в логотипі, зрізаний краєм */}
         <div style={{ position: "absolute", right: -170, bottom: -170, display: "flex", opacity: 0.07 }}>
           <svg width="620" height="620" viewBox="0 0 40 40">
-            <circle cx="20" cy="20" r="19" fill="none" stroke={GREEN} strokeWidth="1.5" />
-            <path d="M13 21l5 5 10-12" fill="none" stroke={GREEN} strokeWidth="2.4" strokeLinecap="round" strokeLinejoin="round" />
+            <circle cx="20" cy="20" r="19" fill="none" stroke={GOLD} strokeWidth="1.5" />
+            <path d="M13 21l5 5 10-12" fill="none" stroke={GOLD} strokeWidth="2.4" strokeLinecap="round" strokeLinejoin="round" />
           </svg>
         </div>
 
         {/* Шапка */}
         <div style={{ display: "flex", alignItems: "center", gap: 18 }}>
           <svg width="56" height="56" viewBox="0 0 40 40">
-            <circle cx="20" cy="20" r="19" fill="none" stroke={GREEN} strokeWidth="1.5" />
-            <path d="M13 21l5 5 10-12" fill="none" stroke={GREEN} strokeWidth="2.4" strokeLinecap="round" strokeLinejoin="round" />
+            <circle cx="20" cy="20" r="19" fill="none" stroke={GOLD} strokeWidth="1.5" />
+            <path d="M13 21l5 5 10-12" fill="none" stroke={GOLD} strokeWidth="2.4" strokeLinecap="round" strokeLinejoin="round" />
           </svg>
           <div style={{ display: "flex", flexDirection: "column", gap: 4 }}>
             <div style={{ fontSize: 28, letterSpacing: "-0.01em" }}>{site.brand.shortName}</div>
@@ -62,11 +64,23 @@ export default function Image() {
 
         {/* Заголовок */}
         <div style={{ display: "flex", flexDirection: "column", gap: 6 }}>
-          <div style={{ fontFamily: "JetBrains Mono", fontSize: 17, letterSpacing: "0.1em", color: GREEN, marginBottom: 18 }}>
+          <div style={{ fontFamily: "JetBrains Mono", fontSize: 17, letterSpacing: "0.1em", color: GOLD_DEEP, marginBottom: 18 }}>
             {"єРобота · Дія · безповоротна допомога".toUpperCase()}
           </div>
           <div style={{ fontSize: 52, lineHeight: 1.15, letterSpacing: "-0.02em" }}>{site.hero.titleA}</div>
-          <div style={{ fontSize: 122, lineHeight: 1.05, letterSpacing: "-0.035em", color: GREEN }}>
+          {/* сума — як на сайті: синє чорнило на золотому маркер-виділенні */}
+          <div
+            style={{
+              fontSize: 122,
+              lineHeight: 1.05,
+              letterSpacing: "-0.035em",
+              color: INK,
+              background: MARKER,
+              alignSelf: "flex-start",
+              padding: "0 20px 8px",
+              borderRadius: 6,
+            }}
+          >
             {site.hero.titleAmount}
           </div>
           <div style={{ fontSize: 52, lineHeight: 1.15, letterSpacing: "-0.02em" }}>{site.hero.titleB}</div>

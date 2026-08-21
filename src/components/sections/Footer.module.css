@@ -15,7 +15,7 @@
   display: grid;
   gap: 2rem;
   padding-bottom: 2rem;
-  border-bottom: 1px solid rgba(245, 241, 234, 0.14);
+  border-bottom: 1px solid rgba(255, 255, 240, 0.14);
 }
 
 @media (min-width: 768px) {
@@ -36,7 +36,7 @@
   font-size: 0.68rem;
   letter-spacing: 0.14em;
   text-transform: uppercase;
-  color: rgba(245, 241, 234, 0.45);
+  color: rgba(255, 255, 240, 0.45);
   margin-bottom: 0.35rem;
 }
 
@@ -56,13 +56,13 @@
   font-size: 0.72rem;
   letter-spacing: 0.12em;
   text-transform: uppercase;
-  color: var(--mint);
+  color: var(--tint);
 }
 
 .loc {
   margin-top: 0.5rem;
   font-size: 0.9rem;
-  color: rgba(245, 241, 234, 0.6) !important;
+  color: rgba(255, 255, 240, 0.6) !important;
 }
 
 .nav {
@@ -72,7 +72,7 @@
 }
 
 .nav a {
-  color: rgba(245, 241, 234, 0.8);
+  color: rgba(255, 255, 240, 0.8);
   font-size: 0.95rem;
   transition: color 0.3s;
 }
@@ -96,12 +96,12 @@
 }
 
 .social .mail {
-  color: rgba(245, 241, 234, 0.8);
+  color: rgba(255, 255, 240, 0.8);
 }
 
 .social .phone:hover,
 .social .mail:hover {
-  color: var(--mint);
+  color: var(--tint);
 }
 
 .icons {
@@ -114,7 +114,7 @@
   width: 44px;
   height: 44px;
   border-radius: 999px;
-  border: 1px solid rgba(245, 241, 234, 0.25);
+  border: 1px solid rgba(255, 255, 240, 0.25);
   display: grid;
   place-items: center;
   transition: background-color 0.3s, color 0.3s, transform 0.3s var(--ease-out);
@@ -131,7 +131,7 @@
   gap: 0.9rem;
   padding-top: 1.75rem;
   font-size: 0.82rem;
-  color: rgba(245, 241, 234, 0.6);
+  color: rgba(255, 255, 240, 0.6);
 }
 
 .disclaimer {
@@ -143,7 +143,7 @@
   display: inline-flex;
   align-items: center;
   gap: 0.15rem;
-  color: rgba(245, 241, 234, 0.85);
+  color: rgba(255, 255, 240, 0.85);
   text-decoration: underline;
   text-underline-offset: 2px;
 }

@@ -5,11 +5,11 @@
 }
 
 .section :global(.lead) {
-  color: rgba(245, 241, 234, 0.72);
+  color: rgba(255, 255, 240, 0.72);
 }
 
 .section :global(.label) {
-  color: var(--mint);
+  color: var(--tint);
 }
 
 .head {
@@ -31,7 +31,7 @@
   top: 8px;
   bottom: 8px;
   width: 1px;
-  background: linear-gradient(to bottom, var(--mint), rgba(207, 234, 207, 0.15));
+  background: linear-gradient(to bottom, var(--tint), rgba(222, 222, 242, 0.15));
 }
 
 @media (min-width: 1024px) {
@@ -46,7 +46,7 @@
     bottom: auto;
     width: auto;
     height: 1px;
-    background: linear-gradient(to right, var(--mint), rgba(207, 234, 207, 0.15));
+    background: linear-gradient(to right, var(--tint), rgba(222, 222, 242, 0.15));
   }
 }
 
@@ -73,13 +73,13 @@
   height: 15px;
   border-radius: 999px;
   background: var(--ink);
-  border: 2px solid var(--mint);
+  border: 2px solid var(--tint);
   box-shadow: 0 0 0 4px var(--ink);
   transition: background-color 0.4s var(--ease-out), transform 0.4s var(--ease-out);
 }
 
 .step:hover .dot {
-  background: var(--mint);
+  background: var(--tint);
   transform: scale(1.15);
 }
 
@@ -94,7 +94,7 @@
   font-family: var(--font-mono);
   font-size: 0.8rem;
   letter-spacing: 0.1em;
-  color: var(--mint);
+  color: var(--tint);
 }
 
 .stepTime {
@@ -106,8 +106,8 @@
   letter-spacing: 0.04em;
   padding: 0.3rem 0.6rem;
   border-radius: 999px;
-  border: 1px solid rgba(245, 241, 234, 0.25);
-  color: rgba(245, 241, 234, 0.85);
+  border: 1px solid rgba(255, 255, 240, 0.25);
+  color: rgba(255, 255, 240, 0.85);
   white-space: nowrap;
 }
 
@@ -121,11 +121,11 @@
 
 .stepText {
   font-size: 0.95rem;
-  color: rgba(245, 241, 234, 0.72);
+  color: rgba(255, 255, 240, 0.72);
 }
 
 .footnote {
   margin-top: 2.5rem;
   font-size: 0.82rem;
-  color: rgba(245, 241, 234, 0.5) !important;
+  color: rgba(255, 255, 240, 0.5) !important;
 }

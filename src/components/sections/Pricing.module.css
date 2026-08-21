@@ -3,7 +3,7 @@
   gap: 2rem;
   padding: clamp(1.75rem, 4vw, 3.25rem);
   background: var(--marker-2);
-  border: 1px solid rgba(16, 21, 28, 0.08);
+  border: 1px solid rgba(35, 36, 85, 0.08);
   border-radius: var(--radius-xl);
   position: relative;
   overflow: hidden;
@@ -77,15 +77,4 @@
   display: grid;
   gap: 0.9rem;
   justify-items: start;
-}
-
-.link {
-  text-decoration: underline;
-  text-underline-offset: 3px;
-  font-weight: 600;
-  font-size: 0.95rem;
-}
-
-.link:hover {
-  color: var(--green);
 }

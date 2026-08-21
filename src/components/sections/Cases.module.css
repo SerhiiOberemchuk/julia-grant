@@ -7,7 +7,8 @@
   border: 1px solid var(--line);
   border-radius: var(--radius-lg);
   background: var(--white);
-  overflow: hidden;
+  /* без overflow: hidden — ховер-прев’ю скріншотів виходить за межі реєстру;
+     заокруглення тримають перший і останній рядки */
   box-shadow: var(--shadow-soft);
 }
 
@@ -37,11 +38,16 @@
   border-top: 0;
   padding-block: 0.8rem;
   background: var(--paper);
+  border-radius: calc(var(--radius-lg) - 1px) calc(var(--radius-lg) - 1px) 0 0;
   font-family: var(--font-mono);
   font-size: 0.68rem;
   letter-spacing: 0.14em;
   text-transform: uppercase;
   color: var(--ink-3);
+}
+
+.list .row:last-child {
+  border-radius: 0 0 calc(var(--radius-lg) - 1px) calc(var(--radius-lg) - 1px);
 }
 
 .colN {
@@ -92,44 +98,18 @@
 }
 
 .tagStart {
-  color: var(--green);
+  color: var(--gold-deep);
 }
 
 .tagScale {
   color: var(--ink);
 }
 
-/* Мініатюра рішення (лише якщо клієнтка додала скріншоти) */
+/* Мініатюра рішення (лише якщо клієнтка додала скріншоти) —
+   сама мініатюра, ховер-прев’ю і лайтбокс живуть у ui/CaseShot */
 .colImg {
   display: flex;
   justify-content: flex-end;
-}
-
-.thumb {
-  position: relative;
-  display: block;
-  width: 72px;
-  aspect-ratio: 4 / 3;
-  border-radius: 4px;
-  overflow: hidden;
-  border: 1px solid var(--line);
-  background: var(--paper);
-}
-
-.thumb img {
-  width: 100%;
-  height: 100%;
-  object-fit: cover;
-}
-
-.thumb svg {
-  position: absolute;
-  right: 3px;
-  bottom: 3px;
-  padding: 2px;
-  background: var(--white);
-  border-radius: 3px;
-  color: var(--ink);
 }
 
 .thumbEmpty {

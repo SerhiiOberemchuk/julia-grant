@@ -28,7 +28,7 @@
 .photo {
   overflow: hidden;
   aspect-ratio: 4 / 5;
-  background: var(--mint-2);
+  background: var(--tint-2);
   border-radius: 6px 6px 0 0;
 }
 

@@ -52,7 +52,7 @@
 }
 
 .msg svg {
-  color: var(--green);
+  color: var(--primary);
   transition: color 0.3s;
 }
 
@@ -64,7 +64,7 @@
     color: var(--white);
   }
   .msg:hover svg {
-    color: var(--mint);
+    color: var(--tint);
   }
 }
 
@@ -142,13 +142,13 @@
 
 .field > input::placeholder,
 .field > textarea::placeholder {
-  color: rgba(16, 21, 28, 0.32);
+  color: rgba(35, 36, 85, 0.32);
 }
 
 .field > input:focus,
 .field > textarea:focus {
   outline: none;
-  border-bottom-color: var(--green);
+  border-bottom-color: var(--primary);
 }
 
 .fieldError > input {
@@ -180,7 +180,7 @@
 }
 
 .pill:has(:focus-visible) {
-  outline: 2px solid var(--green);
+  outline: 2px solid var(--primary);
   outline-offset: 2px;
 }
 
@@ -233,13 +233,13 @@
 }
 
 .consent input:checked + .checkbox {
-  background: var(--green);
-  border-color: var(--green);
+  background: var(--primary);
+  border-color: var(--primary);
   color: var(--white);
 }
 
 .consent input:focus-visible + .checkbox {
-  outline: 2px solid var(--green);
+  outline: 2px solid var(--primary);
   outline-offset: 2px;
 }
 
@@ -283,8 +283,8 @@
   border-radius: 999px;
   display: grid;
   place-items: center;
-  background: var(--mint);
-  color: var(--green);
+  background: var(--tint);
+  color: var(--primary);
 }
 
 @keyframes pop {
@@ -306,12 +306,12 @@
 
 @keyframes pulse {
   0% {
-    box-shadow: 0 0 0 0 rgba(30, 90, 60, 0.35);
+    box-shadow: 0 0 0 0 rgba(35, 36, 85, 0.35);
   }
   60% {
-    box-shadow: 0 0 0 10px rgba(30, 90, 60, 0);
+    box-shadow: 0 0 0 10px rgba(35, 36, 85, 0);
   }
   100% {
-    box-shadow: 0 0 0 0 rgba(30, 90, 60, 0);
+    box-shadow: 0 0 0 0 rgba(35, 36, 85, 0);
   }
 }

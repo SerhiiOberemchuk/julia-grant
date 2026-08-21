@@ -9,7 +9,7 @@
 }
 
 .scrolled {
-  background: rgba(245, 241, 234, 0.94);
+  background: rgba(255, 255, 240, 0.94);
   -webkit-backdrop-filter: blur(16px) saturate(1.1);
   backdrop-filter: blur(16px) saturate(1.1);
   box-shadow: 0 1px 0 var(--line);
@@ -23,7 +23,7 @@
 
 /* Поки відкрите меню — хром хедера прибирається, щоб панель була суцільною */
 .header.menuOpen {
-  background: rgba(245, 241, 234, 0);
+  background: rgba(255, 255, 240, 0);
   -webkit-backdrop-filter: none;
   backdrop-filter: none;
   box-shadow: none;
@@ -52,7 +52,7 @@
 .logoMark {
   width: 40px;
   height: 40px;
-  color: var(--green);
+  color: var(--gold);
   transition: transform 0.5s var(--ease-out);
 }
 
@@ -105,7 +105,7 @@
 
 .navLink:hover {
   color: var(--ink);
-  background: rgba(16, 21, 28, 0.05);
+  background: rgba(35, 36, 85, 0.05);
 }
 
 .actions {

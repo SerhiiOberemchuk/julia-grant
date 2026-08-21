@@ -1,28 +1,31 @@
 /* ------------------------------------------------------------------
    Дизайн-система «Юлія · Гранти»
-   Метафора: живий фінансовий документ — папір, чорнило, печатка «Погоджено».
-   Жодних сторонніх UI-бібліотек: усі токени, сітка та анімації написані вручну.
+   Метафора: живий фінансовий документ — папір айворі, синє чорнило,
+   золота печатка. Жодних сторонніх UI-бібліотек: усі токени, сітка
+   та анімації написані вручну.
 ------------------------------------------------------------------- */
 
 :root {
-  /* Палітра */
-  --paper: #f5f1ea;
-  --paper-2: #ece6da;
-  --paper-3: #e3dccd;
-  --white: #fffdf9;
-  --ink: #10151c;
-  --ink-2: #3c4552;
-  --ink-3: #5b6472; /* ≥4.8:1 на всіх фонах (AA) */
-  --line: rgba(16, 21, 28, 0.12);
-  --line-strong: rgba(16, 21, 28, 0.28);
-  --green: #1e5a3c;
-  --green-2: #256f4a;
-  --green-3: #2f8a5c;
-  --mint: #cfeacf;
-  --mint-2: #e4f3e2;
-  --marker: #f4e37c;
-  --marker-2: #fbf1b3;
-  --stamp: #1f6b45;
+  /* Палітра: айворі (основа) / темно-синій (робочий) / золото (акцент) */
+  --paper: #fffff0;
+  --paper-2: #f6f1da;
+  --paper-3: #ede6c8;
+  --white: #fffffa;
+  --ink: #232455;
+  --ink-2: #3f4270;
+  --ink-3: #5c5f86; /* ≥4.5:1 на всіх фонах (AA) */
+  --line: rgba(35, 36, 85, 0.14);
+  --line-strong: rgba(35, 36, 85, 0.3);
+  --primary: #232455;
+  --primary-2: #303277;
+  --primary-3: #4649a0;
+  --tint: #dedef2;
+  --tint-2: #ececf8;
+  --marker: #f0dfa6;
+  --marker-2: #f7edcd;
+  --gold: #ab8115; /* лише великий текст, іконки, лінії: 3.5:1 на айворі */
+  --gold-deep: #8a680f; /* золото для дрібного тексту й hover (≥4.5:1) */
+  --stamp: #ab8115; /* печатка «Погоджено» тепер золота */
   --danger: #b4432e;
 
   /* Типографіка */
@@ -49,8 +52,8 @@
   --radius-sm: 10px;
 
   /* Тіні */
-  --shadow-soft: 0 1px 2px rgba(16, 21, 28, 0.04), 0 12px 32px -12px rgba(16, 21, 28, 0.16);
-  --shadow-lift: 0 2px 4px rgba(16, 21, 28, 0.05), 0 28px 56px -20px rgba(16, 21, 28, 0.28);
+  --shadow-soft: 0 1px 2px rgba(35, 36, 85, 0.04), 0 12px 32px -12px rgba(35, 36, 85, 0.16);
+  --shadow-lift: 0 2px 4px rgba(35, 36, 85, 0.05), 0 28px 56px -20px rgba(35, 36, 85, 0.28);
 
   /* Анімації */
   --ease-out: cubic-bezier(0.22, 1, 0.36, 1);
@@ -139,7 +142,8 @@ button {
 }
 
 :focus-visible {
-  outline: 2px solid var(--green);
+  /* золото видиме і на айворі (3.5:1), і на синіх блоках (4:1) */
+  outline: 2px solid var(--gold);
   outline-offset: 3px;
   border-radius: 4px;
 }
@@ -220,7 +224,7 @@ button {
 
 /* Курсивний акцент у заголовках */
 .accent {
-  color: var(--green);
+  color: var(--gold-deep);
 }
 
 /* Табличні цифри для чисел */
@@ -292,7 +296,7 @@ button {
   position: absolute;
   inset: 0;
   z-index: -1;
-  background: var(--btn-hover, var(--green));
+  background: var(--btn-hover, var(--gold-deep));
   transform: translateY(101%);
   transition: transform 0.45s var(--ease-out);
   border-radius: inherit;
@@ -304,7 +308,7 @@ button {
   }
   .btn:hover {
     transform: translateY(-1px);
-    border-color: var(--btn-hover, var(--green));
+    border-color: var(--btn-hover, var(--gold-deep));
     box-shadow: var(--shadow-soft);
   }
 }
@@ -314,10 +318,11 @@ button {
 }
 
 .btn--primary {
-  --btn-bg: var(--green);
+  --btn-bg: var(--primary);
   --btn-fg: var(--white);
-  --btn-bd: var(--green);
-  --btn-hover: var(--ink);
+  --btn-bd: var(--primary);
+  /* синій → синій непомітний, тому ховер — глибоке золото (білий текст: 5.2:1) */
+  --btn-hover: var(--gold-deep);
 }
 
 .btn--ghost {
@@ -404,6 +409,11 @@ html.reveal-ready [data-reveal="scale"]:not([data-revealed]) {
     animation-iteration-count: 1 !important;
     transition-duration: 0.01ms !important;
   }
+}
+
+/* Під відкритим лайтбоксом сторінка не скролиться */
+body:has(dialog[open]) {
+  overflow: hidden;
 }
 
 /* ---------- Допоміжні ---------- */

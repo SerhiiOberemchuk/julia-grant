@@ -29,7 +29,7 @@
 .n {
   font-family: var(--font-mono);
   font-size: 0.8rem;
-  color: var(--green);
+  color: var(--gold-deep);
   padding-top: 0.35rem;
   letter-spacing: 0.06em;
 }
@@ -60,7 +60,7 @@
   bottom: -1px;
   height: 1px;
   width: 0;
-  background: var(--green);
+  background: var(--gold);
   transition: width 1s var(--ease-out) 0.2s;
 }
 

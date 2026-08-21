@@ -1,4 +1,3 @@
-import Link from "next/link";
 import { site } from "@/content/site";
 import { Check, ArrowRight } from "@/components/ui/Icons";
 import s from "./Pricing.module.css";
@@ -32,9 +31,6 @@ export function Pricing() {
                 {p.cta}
                 <ArrowRight className="btn__icon btn__icon--arrow" />
               </a>
-              <Link href="/tarify" className={s.link}>
-                Переглянути тарифи
-              </Link>
             </div>
           </div>
         </div>
