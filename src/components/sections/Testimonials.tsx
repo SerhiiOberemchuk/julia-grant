@@ -38,7 +38,8 @@ export function Testimonials() {
                   ) : null}
                   <div className={s.who}>
                     <cite className={s.name}>{it.name}</cite>
-                    <span className={s.role}>{it.niche}{' '}{it.direction}</span>
+                    <span className={s.role}>{it.niche}</span>
+                    <span className={s.company}>{it.direction}</span>
                   </div>
                   <span className={`${s.sum} num`}>грант {it.sum}</span>
                 </footer>
