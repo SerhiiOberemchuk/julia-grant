@@ -74,6 +74,18 @@ export function Footer() {
           <span>
             © {year} {site.footer.legalName}. {site.footer.rights}
           </span>
+          <span className={s.dev}>
+            {site.footer.developer.prefix}{" "}
+            <a
+              href={site.footer.developer.href}
+              target="_blank"
+              rel="noopener noreferrer"
+              title="Розробка та дизайн сайту"
+            >
+              {site.footer.developer.label}
+              <ArrowUpRight width={12} height={12} />
+            </a>
+          </span>
         </div>
       </div>
     </footer>
