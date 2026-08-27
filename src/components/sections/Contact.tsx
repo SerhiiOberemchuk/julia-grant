@@ -97,9 +97,11 @@ export function Contact() {
               <a href={site.contacts.telegram} target="_blank" rel="noopener noreferrer" className={s.msg}>
                 <Telegram /> Telegram
               </a>
-              <a href={site.contacts.viber} className={s.msg}>
-                <Viber /> Viber
-              </a>
+              { site.contacts.viber && (
+                <a href={site.contacts.viber} className={s.msg}>
+                  <Viber /> Viber
+                </a>
+              )}
               <a href={site.contacts.instagram} target="_blank" rel="noopener noreferrer" className={s.msg}>
                 <Instagram /> Instagram
               </a>

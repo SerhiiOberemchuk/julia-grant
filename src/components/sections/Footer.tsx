@@ -44,9 +44,11 @@ export function Footer() {
             <a href={site.contacts.telegram} target="_blank" rel="noopener noreferrer" aria-label="Telegram">
               <Telegram />
             </a>
+          { site.contacts.viber && (
             <a href={site.contacts.viber} aria-label="Viber">
               <Viber />
             </a>
+          )}
             <a href={site.contacts.instagram} target="_blank" rel="noopener noreferrer" aria-label="Instagram">
               <Instagram />
             </a>
