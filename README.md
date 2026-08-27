@@ -49,10 +49,11 @@ src/
 | Скріни погоджених заявок | `public/cases/` + масив `cases.items` |
 | Кольори, шрифти, відступи, кнопки | `src/app/globals.css` |
 | Секції | `src/components/sections/*` |
-| Прийом заявок | `src/app/api/lead/route.ts` (Telegram / Resend через `.env`) |
+| Прийом заявок | `src/app/api/lead/route.ts` (Telegram через `.env`) |
 | Картинка для соцмереж (og:image) | `src/app/opengraph-image.tsx` + шрифти в `assets/` |
 | Google Ads конверсія | `src/lib/analytics.ts` + `NEXT_PUBLIC_GADS_CONVERSION` |
 
 ## Змінні оточення
 
-Див. `.env.example`. Без налаштованих каналів заявки логуються в консоль сервера.
+Див. `.env.example`. Заявки з форми йдуть у Telegram — потрібні `TELEGRAM_BOT_TOKEN`
+і `TELEGRAM_CHAT_ID`. Поки вони не задані, заявки логуються в консоль сервера.

@@ -1,11 +1,16 @@
 import { NextResponse } from "next/server";
 
 /**
- * Прийом заявок з форми.
- * Канали доставки (вмикаються env-змінними, можна кілька одночасно):
- *   TELEGRAM_BOT_TOKEN + TELEGRAM_CHAT_ID  — повідомлення в Telegram
- *   RESEND_API_KEY + LEAD_TO_EMAIL (+ LEAD_FROM_EMAIL) — лист через Resend API
- * Якщо нічого не налаштовано — лід логується у консоль сервера (режим розробки).
+ * Прийом заявок з форми → повідомлення в Telegram.
+ *
+ * Обовʼязкові env-змінні:
+ *   TELEGRAM_BOT_TOKEN — токен бота від @BotFather
+ *   TELEGRAM_CHAT_ID   — куди слати: id каналу/групи (напр. -1001234567890),
+ *                        @username каналу або id особистого чату
+ * Необовʼязкова:
+ *   TELEGRAM_THREAD_ID — id теми, якщо група з увімкненими «Темами» (форум)
+ *
+ * Якщо змінні не задані — лід логується в консоль сервера (режим розробки).
  */
 
 type Lead = {
@@ -18,6 +23,7 @@ type Lead = {
 };
 
 const PHONE_RE = /^[+\d\s()-]{9,20}$/;
+const TG_TIMEOUT_MS = 10_000;
 
 // простий rate-limit у пам'яті процесу (достатньо для лендінгу)
 const hits = new Map<string, { n: number; t: number }>();
@@ -36,51 +42,76 @@ function esc(s: string) {
   return s.replace(/[<>&]/g, (ch) => ({ "<": "&lt;", ">": "&gt;", "&": "&amp;" })[ch] as string);
 }
 
+function kyivTime() {
+  return new Intl.DateTimeFormat("uk-UA", {
+    timeZone: "Europe/Kyiv",
+    day: "2-digit",
+    month: "2-digit",
+    hour: "2-digit",
+    minute: "2-digit",
+  }).format(new Date());
+}
+
+function buildText(lead: Lead) {
+  return [
+    "🟢 <b>Нова заявка з сайту</b>",
+    "",
+    `👤 Ім'я: <b>${esc(lead.name)}</b>`,
+    `📞 Телефон: <code>${esc(lead.phone)}</code>`,
+    lead.direction ? `🎯 Напрям: ${esc(lead.direction)}` : null,
+    lead.message ? `💬 Про ідею: ${esc(lead.message)}` : null,
+    "",
+    `🕒 ${kyivTime()}`,
+    lead.page ? `🔗 ${esc(lead.page)}` : null,
+  ]
+    .filter((l) => l !== null)
+    .join("\n");
+}
+
+async function callTelegram(token: string, payload: Record<string, unknown>) {
+  const res = await fetch(`https://api.telegram.org/bot${token}/sendMessage`, {
+    method: "POST",
+    headers: { "Content-Type": "application/json" },
+    body: JSON.stringify(payload),
+    signal: AbortSignal.timeout(TG_TIMEOUT_MS),
+  });
+
+  if (res.ok) return true;
+
+  // Telegram віддає причину в JSON — вона критично важлива для налагодження
+  const detail = await res.text().catch(() => "");
+  console.error(`[lead] Telegram ${res.status}: ${detail.slice(0, 300)}`);
+  return false;
+}
+
 async function sendTelegram(lead: Lead) {
   const token = process.env.TELEGRAM_BOT_TOKEN;
   const chat = process.env.TELEGRAM_CHAT_ID;
   if (!token || !chat) return false;
 
-  const text = [
-    "🟢 <b>Нова заявка з сайту</b>",
-    `👤 Ім'я: <b>${esc(lead.name)}</b>`,
-    `📞 Телефон: <code>${esc(lead.phone)}</code>`,
-    lead.direction ? `🎯 Напрям: ${esc(lead.direction)}` : null,
-    lead.message ? `💬 Про ідею: ${esc(lead.message)}` : null,
-    lead.page ? `🔗 ${esc(lead.page)}` : null,
-  ]
-    .filter(Boolean)
-    .join("\n");
+  const payload: Record<string, unknown> = {
+    chat_id: chat,
+    text: buildText(lead),
+    parse_mode: "HTML",
+    link_preview_options: { is_disabled: true },
+  };
 
-  const res = await fetch(`https://api.telegram.org/bot${token}/sendMessage`, {
-    method: "POST",
-    headers: { "Content-Type": "application/json" },
-    body: JSON.stringify({ chat_id: chat, text, parse_mode: "HTML" }),
-  });
-  return res.ok;
-}
+  const thread = process.env.TELEGRAM_THREAD_ID;
+  if (thread) payload.message_thread_id = Number(thread);
 
-async function sendEmail(lead: Lead) {
-  const key = process.env.RESEND_API_KEY;
-  const to = process.env.LEAD_TO_EMAIL;
-  if (!key || !to) return false;
-  const from = process.env.LEAD_FROM_EMAIL ?? "Сайт <onboarding@resend.dev>";
+  try {
+    if (await callTelegram(token, payload)) return true;
+  } catch (e) {
+    console.error("[lead] Telegram мережева помилка", e);
+  }
 
-  const html = `
-    <h2>Нова заявка з сайту</h2>
-    <p><b>Ім'я:</b> ${esc(lead.name)}</p>
-    <p><b>Телефон:</b> ${esc(lead.phone)}</p>
-    ${lead.direction ? `<p><b>Напрям:</b> ${esc(lead.direction)}</p>` : ""}
-    ${lead.message ? `<p><b>Про ідею:</b> ${esc(lead.message)}</p>` : ""}
-    ${lead.page ? `<p><small>${esc(lead.page)}</small></p>` : ""}
-  `;
-
-  const res = await fetch("https://api.resend.com/emails", {
-    method: "POST",
-    headers: { Authorization: `Bearer ${key}`, "Content-Type": "application/json" },
-    body: JSON.stringify({ from, to: [to], subject: `Заявка: ${lead.name}, ${lead.phone}`, html }),
-  });
-  return res.ok;
+  // одна повторна спроба: мережеві збої та 5xx у Telegram трапляються
+  try {
+    return await callTelegram(token, payload);
+  } catch (e) {
+    console.error("[lead] Telegram повторна спроба не вдалася", e);
+    return false;
+  }
 }
 
 export async function POST(req: Request) {
@@ -109,20 +140,12 @@ export async function POST(req: Request) {
 
   const lead: Lead = { name, phone, direction, message, page };
 
-  const results = await Promise.allSettled([sendTelegram(lead), sendEmail(lead)]);
-  const delivered = results.some((r) => r.status === "fulfilled" && r.value === true);
-  const configured = Boolean(
-    (process.env.TELEGRAM_BOT_TOKEN && process.env.TELEGRAM_CHAT_ID) ||
-      (process.env.RESEND_API_KEY && process.env.LEAD_TO_EMAIL),
-  );
-
-  if (!configured) {
-    console.info("[lead] (канали доставки не налаштовані) →", lead);
+  if (!process.env.TELEGRAM_BOT_TOKEN || !process.env.TELEGRAM_CHAT_ID) {
+    console.info("[lead] (Telegram не налаштований) →", lead);
     return NextResponse.json({ ok: true, dev: true });
   }
 
-  if (!delivered) {
-    console.error("[lead] доставка не вдалася", results);
+  if (!(await sendTelegram(lead))) {
     return NextResponse.json({ ok: false, error: "delivery" }, { status: 502 });
   }
 

@@ -52,7 +52,7 @@
 
 - **Next.js 16 (App Router) + TypeScript**, CSS Modules + власні дизайн-токени в `globals.css`. Жодних UI-кітів, Tailwind, framer-motion тощо.
 - Увесь контент — в одному файлі **`src/content/site.ts`** (тексти, цифри, контакти, FAQ), щоб правити без коду.
-- Форма → `POST /api/lead`: валідація, honeypot, rate-limit, доставка в **Telegram** і/або **email (Resend)** — вмикається змінними оточення (`.env.example`). Без налаштування лід логується в консоль.
+- Форма → `POST /api/lead`: валідація, honeypot, rate-limit, доставка в **Telegram** — вмикається змінними оточення (`.env.example`). Без налаштування лід логується в консоль.
 - **Google Ads**: `src/lib/analytics.ts` — при успішній заявці шле `conversion` (`NEXT_PUBLIC_GADS_CONVERSION`) + `generate_lead` + `dataLayer.push`. Залишилось лише додати тег gtag у layout, коли буде акаунт.
 - SEO: metadata/OG, JSON-LD (ProfessionalService + FAQPage), семантика, `lang="uk"`, доступність (aria, фокус, reduced-motion).
 - Сторінка `/privacy` — політика конфіденційності.
