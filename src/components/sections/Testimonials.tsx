@@ -9,6 +9,7 @@ import s from "./Testimonials.module.css";
  */
 export function Testimonials() {
   const t = site.testimonials;
+  const items = site.cases.items
   return (
     <section id="testimonials" className="section" aria-labelledby="testimonials-title">
       <div className="container">
@@ -22,7 +23,7 @@ export function Testimonials() {
         </div>
 
         <ul className={s.grid}>
-          {t.items.map((it, i) => (
+          {items.map((it, i) => (
             <li
               key={it.name + i}
               className={s.card}
@@ -37,7 +38,7 @@ export function Testimonials() {
                   ) : null}
                   <div className={s.who}>
                     <cite className={s.name}>{it.name}</cite>
-                    <span className={s.role}>{it.role}</span>
+                    <span className={s.role}>{it.niche}{' '}{it.direction}</span>
                   </div>
                   <span className={`${s.sum} num`}>грант {it.sum}</span>
                 </footer>
