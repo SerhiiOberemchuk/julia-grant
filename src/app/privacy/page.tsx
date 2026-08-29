@@ -8,6 +8,17 @@ export const metadata: Metadata = {
   description:
     "Політика конфіденційності: які персональні дані збираються на сайті, з якою метою обробляються, як зберігаються та які права має користувач.",
   robots: { index: true, follow: true },
+  // без цього canonical/og:url успадковуються з layout і вказують на головну
+  alternates: { canonical: "/privacy" },
+  openGraph: {
+    type: "website",
+    locale: "uk_UA",
+    siteName: site.brand.name,
+    url: "/privacy",
+    title: "Політика конфіденційності",
+    description:
+      "Політика конфіденційності: які персональні дані збираються на сайті, з якою метою обробляються, як зберігаються та які права має користувач.",
+  },
 };
 
 const L = site.legal;

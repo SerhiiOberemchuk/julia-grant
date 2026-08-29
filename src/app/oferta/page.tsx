@@ -8,6 +8,17 @@ export const metadata: Metadata = {
   description:
     "Публічна оферта про надання інформаційно-консультаційних послуг з підготовки документів для отримання державного гранту «Власна справа».",
   robots: { index: true, follow: true },
+  // без цього canonical/og:url успадковуються з layout і вказують на головну
+  alternates: { canonical: "/oferta" },
+  openGraph: {
+    type: "website",
+    locale: "uk_UA",
+    siteName: site.brand.name,
+    url: "/oferta",
+    title: "Договір публічної оферти",
+    description:
+      "Публічна оферта про надання інформаційно-консультаційних послуг з підготовки документів для отримання державного гранту «Власна справа».",
+  },
 };
 
 const L = site.legal;
