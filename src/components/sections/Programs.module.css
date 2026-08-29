@@ -37,7 +37,7 @@
 
 .cardDark .for,
 .cardDark .index {
-  color: rgba(255, 255, 250, 0.72);
+  color: var(--marker); /* світле золото — та сама роль на синьому */
 }
 
 .head {
@@ -59,7 +59,7 @@
 .index {
   font-family: var(--font-mono);
   font-size: 0.8rem;
-  color: var(--ink-3);
+  color: var(--gold-deep);
 }
 
 .title {

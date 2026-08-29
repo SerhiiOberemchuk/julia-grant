@@ -9,7 +9,7 @@
 }
 
 .section :global(.label) {
-  color: var(--tint);
+  color: var(--marker); /* золота роль label на синьому (10.8:1) */
 }
 
 .head {
@@ -94,7 +94,7 @@
   font-family: var(--font-mono);
   font-size: 0.8rem;
   letter-spacing: 0.1em;
-  color: var(--tint);
+  color: var(--marker);
 }
 
 .stepTime {

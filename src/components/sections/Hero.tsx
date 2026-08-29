@@ -10,7 +10,7 @@ export function Hero() {
     <section id="top" className={s.hero} aria-labelledby="hero-title">
       <div className={`container ${s.inner}`}>
         <div className={s.copy}>
-          <p className={`label ${s.kicker} ${s.in}`} style={{ "--i": 0 } as React.CSSProperties}>
+          <p className={`label ${s.in}`} style={{ "--i": 0 } as React.CSSProperties}>
             {h.kicker}
           </p>
 

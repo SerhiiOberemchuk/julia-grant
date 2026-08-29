@@ -196,7 +196,8 @@ button {
   font-size: var(--fs-label);
   letter-spacing: 0.14em;
   text-transform: uppercase;
-  color: var(--ink-3);
+  /* гірчичний на молочному — фірмовий колір розмітки (дрібний текст: gold-deep, 5.1:1) */
+  color: var(--gold-deep);
   display: inline-flex;
   align-items: center;
   gap: 0.6em;

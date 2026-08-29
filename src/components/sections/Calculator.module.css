@@ -241,6 +241,7 @@
   font-size: clamp(2.2rem, 1.2rem + 4vw, 3.9rem);
   line-height: 1;
   letter-spacing: -0.03em;
+  color: var(--marker); /* сума — світле золото на синьому */
 }
 
 .cur {

@@ -1,3 +1,7 @@
+.band :global(.label) {
+  color: var(--ink-2); /* на золотистому фоні золотий label не тримає контраст */
+}
+
 .band {
   display: grid;
   gap: 2rem;

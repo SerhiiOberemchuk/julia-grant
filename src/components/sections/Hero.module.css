@@ -37,10 +37,6 @@
   justify-items: start;
 }
 
-.kicker {
-  color: var(--gold-deep);
-}
-
 .title {
   font-size: var(--fs-hero);
   max-width: 13ch;
@@ -104,6 +100,7 @@
   font-weight: 600;
   letter-spacing: -0.02em;
   line-height: 1;
+  color: var(--gold); /* великі цифри: 3.5:1 = AA large */
 }
 
 .factLabel {

@@ -131,6 +131,7 @@
   font-size: clamp(1.35rem, 1.1rem + 0.8vw, 1.7rem);
   letter-spacing: -0.02em;
   line-height: 1;
+  color: var(--gold); /* як цифри фактів у Hero: великий текст, AA large */
 }
 
 .factLabel {

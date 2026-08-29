@@ -36,7 +36,7 @@
   font-size: 0.68rem;
   letter-spacing: 0.14em;
   text-transform: uppercase;
-  color: rgba(255, 255, 240, 0.45);
+  color: rgba(240, 223, 166, 0.75); /* приглушене світле золото (--marker) */
   margin-bottom: 0.35rem;
 }
 
@@ -56,7 +56,7 @@
   font-size: 0.72rem;
   letter-spacing: 0.12em;
   text-transform: uppercase;
-  color: var(--tint);
+  color: var(--marker);
 }
 
 .loc {
