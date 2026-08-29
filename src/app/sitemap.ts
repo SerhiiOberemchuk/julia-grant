@@ -2,10 +2,11 @@ import type { MetadataRoute } from "next";
 import { site } from "@/content/site";
 
 export default function sitemap(): MetadataRoute.Sitemap {
-  return ["", "/oferta", "/privacy"].map((path) => ({
+  // Корінь — зі слешем (так його показує Google), внутрішні сторінки — без (так їх віддає Next)
+  return ["/", "/oferta", "/privacy"].map((path) => ({
     url: `${site.url}${path}`,
     lastModified: new Date(),
-    changeFrequency: path === "" ? "weekly" : "yearly",
-    priority: path === "" ? 1 : 0.3,
+    changeFrequency: path === "/" ? "weekly" : "yearly",
+    priority: path === "/" ? 1 : 0.3,
   }));
 }
