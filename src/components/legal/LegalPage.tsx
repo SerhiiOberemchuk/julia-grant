@@ -15,7 +15,7 @@ type Props = {
   children: ReactNode;
 };
 
-/** Спільна оболонка для правових сторінок: оферта, політика, тарифи */
+/** Спільна оболонка для правових сторінок */
 export function LegalPage({ kicker, title, updatedAt, intro, wide, children }: Props) {
   return (
     <article className={s.page} style={wide ? ({ "--legal-width": "1040px" } as CSSProperties) : undefined}>
@@ -36,16 +36,6 @@ export function LegalPage({ kicker, title, updatedAt, intro, wide, children }: P
       <div className={`container ${s.body}`}>{children}</div>
 
       <div className={`container ${s.foot}`}>
-        <div className={s.otherDocs}>
-          <p className={s.otherTitle}>Інші документи</p>
-          <ul>
-            {site.legalPages.map((p) => (
-              <li key={p.href}>
-                <Link href={p.href}>{p.label}</Link>
-              </li>
-            ))}
-          </ul>
-        </div>
         <Link href="/#contact" className="btn btn--primary">
           Записатися на консультацію
           <ArrowRight className="btn__icon btn__icon--arrow" />
