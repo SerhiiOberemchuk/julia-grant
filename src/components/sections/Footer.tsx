@@ -1,4 +1,5 @@
 import Link from "next/link";
+import Image from "next/image";
 import { site } from "@/content/site";
 import { Telegram, Viber, Instagram, ArrowUpRight } from "@/components/ui/Icons";
 import s from "./Footer.module.css";
@@ -9,6 +10,7 @@ export function Footer() {
     <footer className={s.footer}>
       <div className={`container ${s.grid}`}>
         <div className={s.brand}>
+          <Image src="/images/logo-mark-light.png" alt="" width={62} height={34} className={s.mark} />
           <p className={s.name}>{site.brand.shortName}</p>
           <p className={s.tag}>{site.brand.tagline}</p>
           <p className={`muted ${s.loc}`}>{site.brand.location}</p>

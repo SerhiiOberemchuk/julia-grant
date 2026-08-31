@@ -2,6 +2,7 @@
 
 import { useEffect, useState } from "react";
 import Link from "next/link";
+import Image from "next/image";
 import { site } from "@/content/site";
 import { Phone, ArrowUpRight } from "@/components/ui/Icons";
 import s from "./Header.module.css";
@@ -35,10 +36,7 @@ export function Header() {
         <div className={`container ${s.bar}`}>
           <Link href="/" className={s.logo} aria-label="На головну">
             <span className={s.logoMark} aria-hidden="true">
-              <svg viewBox="0 0 40 40" width="40" height="40">
-                <circle cx="20" cy="20" r="19" fill="none" stroke="currentColor" strokeWidth="1.5" />
-                <path d="M13 21l5 5 10-12" fill="none" stroke="currentColor" strokeWidth="2.4" strokeLinecap="round" strokeLinejoin="round" />
-              </svg>
+              <Image src="/images/logo-mark.png" alt="" width={73} height={40} priority />
             </span>
             <span className={s.logoText}>
               <b>{site.brand.shortName}</b>
