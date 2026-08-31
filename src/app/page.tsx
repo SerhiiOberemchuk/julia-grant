@@ -24,6 +24,7 @@ function JsonLd() {
         url: site.url,
         telephone: site.contacts.phoneDisplay,
         email: site.contacts.email,
+        address: { "@type": "PostalAddress", addressLocality: "Рівне", addressCountry: "UA" },
         areaServed: { "@type": "Country", name: "Україна" },
         priceRange: "$$",
         founder: { "@type": "Person", name: "Юлія" },

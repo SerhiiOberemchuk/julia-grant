@@ -13,9 +13,12 @@ const mono = await readFile(join(process.cwd(), "assets/jetbrains-mono-500.ttf")
 // Банер клієнтки з OLX (700×700) — джерело public/images/olx-image.webp, для Satori збережений як JPEG
 const photo = await readFile(join(process.cwd(), "assets/og-photo.jpg"));
 const photoSrc = `data:image/jpeg;base64,${photo.toString("base64")}`;
+// Монограма «ЮЛ» з логотипа, перефарбована в колір паперу (джерело public/images/logo.jpg)
+const mark = await readFile(join(process.cwd(), "assets/logo-mark-paper.png"));
+const markSrc = `data:image/png;base64,${mark.toString("base64")}`;
+const MARK_RATIO = 705 / 388; // ширина/висота монограми
 
 const PAPER = "#fffff0";
-const GOLD = "#ab8115";
 const MARKER = "#f0dfa6";
 // синій із самого банера, щоб панель зливалася з фото без шва
 const NAVY = "#0a203f";
@@ -56,23 +59,19 @@ export default function Image() {
             position: "relative",
           }}
         >
-          {/* печатка «погоджено» — знак із логотипа, зрізаний краєм */}
-          <div style={{ position: "absolute", right: -150, bottom: -150, display: "flex", opacity: 0.08 }}>
-            <svg width="520" height="520" viewBox="0 0 40 40">
-              <circle cx="20" cy="20" r="19" fill="none" stroke={MARKER} strokeWidth="1.5" />
-              <path d="M13 21l5 5 10-12" fill="none" stroke={MARKER} strokeWidth="2.4" strokeLinecap="round" strokeLinejoin="round" />
-            </svg>
+          {/* водяний знак — монограма з логотипа, зрізана краєм */}
+          <div style={{ position: "absolute", right: -120, bottom: -60, display: "flex", opacity: 0.07 }}>
+            {/* eslint-disable-next-line @next/next/no-img-element -- Satori приймає лише <img> */}
+            <img src={markSrc} width={420} height={420 / MARK_RATIO} alt="" />
           </div>
 
-          {/* Шапка: логотип */}
-          <div style={{ display: "flex", alignItems: "center", gap: 16 }}>
-            <svg width="52" height="52" viewBox="0 0 40 40">
-              <circle cx="20" cy="20" r="19" fill="none" stroke={GOLD} strokeWidth="1.5" />
-              <path d="M13 21l5 5 10-12" fill="none" stroke={GOLD} strokeWidth="2.4" strokeLinecap="round" strokeLinejoin="round" />
-            </svg>
+          {/* Шапка: монограма з логотипа + ім'я, як на самому лого */}
+          <div style={{ display: "flex", alignItems: "center", gap: 18 }}>
+            {/* eslint-disable-next-line @next/next/no-img-element -- Satori приймає лише <img> */}
+            <img src={markSrc} width={54 * MARK_RATIO} height={54} alt="" />
             <div style={{ display: "flex", flexDirection: "column", gap: 4 }}>
-              <div style={{ fontSize: 26, letterSpacing: "-0.01em" }}>{site.brand.shortName}</div>
-              <div style={{ fontFamily: "JetBrains Mono", fontSize: 13, letterSpacing: "0.12em", color: MARKER }}>
+              <div style={{ fontSize: 24, letterSpacing: "-0.01em" }}>Юлія Лукащук</div>
+              <div style={{ fontFamily: "JetBrains Mono", fontSize: 12, letterSpacing: "0.12em", color: MARKER }}>
                 {site.brand.tagline.toUpperCase()}
               </div>
             </div>

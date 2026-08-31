@@ -335,24 +335,12 @@ export default function OfertaPage() {
             <dd>{L.executorName}</dd>
           </div>
           <div>
-            <dt>РНОКПП</dt>
-            <dd>{L.ipn}</dd>
-          </div>
-          <div>
             <dt>Адреса</dt>
             <dd>{L.address}</dd>
           </div>
           <div>
             <dt>Статус</dt>
             <dd>{L.taxGroup}</dd>
-          </div>
-          <div>
-            <dt>IBAN</dt>
-            <dd>{L.iban}</dd>
-          </div>
-          <div>
-            <dt>Банк</dt>
-            <dd>{L.bank}</dd>
           </div>
           <div>
             <dt>E-mail</dt>
@@ -367,6 +355,9 @@ export default function OfertaPage() {
             </dd>
           </div>
         </dl>
+        <p className="muted">
+          Повні банківські реквізити (РНОКПП, IBAN, банк) Виконавець надає під час укладення договору.
+        </p>
       </LegalSection>
     </LegalPage>
   );
