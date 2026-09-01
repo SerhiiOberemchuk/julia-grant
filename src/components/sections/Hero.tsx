@@ -52,10 +52,10 @@ export function Hero() {
         <figure className={`${s.visual} ${s.inVisual}`}>
           <div className={s.photoCard}>
             <Image
-              src="/images/julia.jpg"
+              src="/images/julia-hero.jpg"
               alt={h.photoAlt}
-              width={1000}
-              height={1250}
+              width={960}
+              height={1280}
               priority
               className={s.photo}
               sizes="(min-width: 1024px) 40vw, (min-width: 768px) 520px, 92vw"
