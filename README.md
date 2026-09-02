@@ -52,6 +52,7 @@ src/
 | Прийом заявок | `src/app/api/lead/route.ts` (Telegram через `.env`) |
 | Картинка для соцмереж (og:image) | `src/app/opengraph-image.tsx` + шрифти в `assets/` |
 | Google Ads конверсія | `src/lib/analytics.ts` + `NEXT_PUBLIC_GADS_CONVERSION` |
+| Веб-аналітика | Vercel Dashboard → проєкт → Analytics (`@vercel/analytics`) |
 
 ## Змінні оточення
 

@@ -571,7 +571,7 @@ export const site = {
     taxGroup: "платник єдиного податку 3 групи, не платник ПДВ",
     email: contacts.email,
     phone: contacts.phoneDisplay,
-    privacyDate: "31.08.2026",
+    privacyDate: "02.09.2026",
   },
 } as const;
 
