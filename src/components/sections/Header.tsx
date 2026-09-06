@@ -40,7 +40,6 @@ export function Header() {
             </span>
             <span className={s.logoText}>
               <b>{site.brand.shortName}</b>
-              <i>{site.brand.tagline}</i>
             </span>
           </Link>
 

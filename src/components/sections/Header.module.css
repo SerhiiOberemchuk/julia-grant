@@ -76,15 +76,6 @@
   letter-spacing: -0.01em;
 }
 
-.logoText i {
-  font-style: normal;
-  font-family: var(--font-mono);
-  font-size: 0.66rem;
-  letter-spacing: 0.08em;
-  text-transform: uppercase;
-  color: var(--ink-3);
-}
-
 .nav {
   display: none;
   gap: 0.25rem;
