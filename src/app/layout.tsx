@@ -3,6 +3,7 @@ import "./globals.css";
 import type { Metadata, Viewport } from "next";
 import { Unbounded, Manrope, JetBrains_Mono } from "next/font/google";
 import { Analytics } from "@vercel/analytics/next";
+import { ClarityAnalytics } from "@/components/ClarityAnalytics";
 import { site } from "@/content/site";
 import { Header } from "@/components/sections/Header";
 import { Footer } from "@/components/sections/Footer";
@@ -74,6 +75,7 @@ export default function RootLayout({ children }: { children: React.ReactNode }) 
         <Footer />
         <MobileBar />
         <Analytics />
+        <ClarityAnalytics />
       </body>
     </html>
   );
